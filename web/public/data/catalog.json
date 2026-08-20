@@ -1,0 +1,53 @@
+{
+  "subjects": [
+    {
+      "id": "os",
+      "name": "操作系统",
+      "short": "OS",
+      "color": "#0f6e56",
+      "stats": {
+        "chapters": 5,
+        "points": 116,
+        "figures": 18
+      },
+      "dataFile": "/data/os.json"
+    },
+    {
+      "id": "ds",
+      "name": "数据结构",
+      "short": "DS",
+      "color": "#185fa5",
+      "stats": {
+        "chapters": 8,
+        "points": 104,
+        "figures": 32
+      },
+      "dataFile": "/data/ds.json"
+    },
+    {
+      "id": "coa",
+      "name": "计算机组成原理",
+      "short": "COA",
+      "color": "#854f0b",
+      "stats": {
+        "chapters": 7,
+        "points": 53,
+        "figures": 39
+      },
+      "dataFile": "/data/coa.json"
+    },
+    {
+      "id": "net",
+      "name": "计算机网络",
+      "short": "NET",
+      "color": "#993c1d",
+      "stats": {
+        "chapters": 6,
+        "points": 81,
+        "figures": 33
+      },
+      "dataFile": "/data/net.json"
+    }
+  ],
+  "generatedAt": "2026-08-20T11:11:55"
+}

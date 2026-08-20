@@ -1,0 +1,22 @@
+# Logs / deps / local
+node_modules/
+web/node_modules/
+*.log
+.DS_Store
+.vscode/
+.idea/
+
+# Source extraction (huge; not needed to open Outputs)
+extracted/
+**/pages/page-*.png
+
+# Build outputs (Vercel builds from web/; Outputs is local friend package)
+web/dist/
+Outputs/assets/
+Outputs/data/
+Outputs/figures/
+Outputs/lessons/
+Outputs/index.html
+
+# Dev-only caches
+_points_export.json

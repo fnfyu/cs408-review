@@ -1,0 +1,612 @@
+
+==================================================
+第 1 页（共 12 页）
+==================================================
+
+[文字]
+本节内容
+顺序栈
+的实现
+王道考研/CSKAOYAN.COM
+
+[嵌入图片：page001_img1.png]
+
+[嵌入图片：page001_img2.png]
+
+[嵌入图片：page001_img3.png]
+
+[⚠️ 建议在复习资料中贴图]
+[渲染图路径] d:\fnfyu\projects\408\cs408-review\extracted\ds\第三章 栈、队列和数组\3.1.2_栈的顺序存储实现\pages\page-001.png
+[原因] 含 3 张嵌入图片, 矢量图示为主
+
+==================================================
+第 2 页（共 12 页）
+==================================================
+
+[文字]
+王道考研/CSKAOYAN.COM
+知识总览
+创、销、增、删、改、查
+
+[嵌入图片：page002_img1.png]
+
+[嵌入图片：page002_img2.png]
+
+[嵌入图片：page002_img3.png]
+
+[嵌入图片：page002_img4.png]
+
+[嵌入图片：page002_img5.png]
+
+[嵌入图片：page002_img6.png]
+
+[嵌入图片：page002_img7.png]
+
+[嵌入图片：page002_img8.png]
+
+[⚠️ 建议在复习资料中贴图]
+[渲染图路径] d:\fnfyu\projects\408\cs408-review\extracted\ds\第三章 栈、队列和数组\3.1.2_栈的顺序存储实现\pages\page-002.png
+[原因] 含 8 张嵌入图片, 矢量图示为主
+
+==================================================
+第 3 页（共 12 页）
+==================================================
+
+[文字]
+王道考研/CSKAOYAN.COM
+顺序栈的定义
+顺序存储：给各个数据
+元素分配连续的存储空
+间，大小为
+MaxSize*sizeof(ElemType)
+data[9]
+data[8]
+data[7]
+data[6]
+data[5]
+data[4]
+data[3]
+data[2]
+data[1]
+data[0]
+内存
+Sq：sequence —— 顺序
+top
+a
+b
+c
+d
+e
+top 指向栈顶元素
+top(4B)
+top = 4
+
+[嵌入图片：page003_img1.png]
+
+[嵌入图片：page003_img2.png]
+
+[嵌入图片：page003_img3.png]
+
+[嵌入图片：page003_img4.png]
+
+[嵌入图片：page003_img5.png]
+
+[嵌入图片：page003_img6.png]
+
+[嵌入图片：page003_img7.png]
+
+[嵌入图片：page003_img8.png]
+
+[嵌入图片：page003_img9.png]
+
+[⚠️ 建议在复习资料中贴图]
+[渲染图路径] d:\fnfyu\projects\408\cs408-review\extracted\ds\第三章 栈、队列和数组\3.1.2_栈的顺序存储实现\pages\page-003.png
+[原因] 含 9 张嵌入图片
+
+==================================================
+第 4 页（共 12 页）
+==================================================
+
+[文字]
+王道考研/CSKAOYAN.COM
+初始化操作
+内存
+top
+top 
+top = -1
+data[9]
+data[8]
+data[7]
+data[6]
+data[5]
+data[4]
+data[3]
+data[2]
+data[1]
+data[0]
+增删改查
+
+[嵌入图片：page004_img1.png]
+
+[嵌入图片：page004_img2.png]
+
+[嵌入图片：page004_img3.png]
+
+[嵌入图片：page004_img4.png]
+
+[嵌入图片：page004_img5.png]
+
+[嵌入图片：page004_img6.png]
+
+[嵌入图片：page004_img7.png]
+
+[嵌入图片：page004_img8.png]
+
+[嵌入图片：page004_img9.png]
+
+[嵌入图片：page004_img10.png]
+
+[嵌入图片：page004_img11.png]
+
+[⚠️ 建议在复习资料中贴图]
+[渲染图路径] d:\fnfyu\projects\408\cs408-review\extracted\ds\第三章 栈、队列和数组\3.1.2_栈的顺序存储实现\pages\page-004.png
+[原因] 含 11 张嵌入图片
+
+==================================================
+第 5 页（共 12 页）
+==================================================
+
+[文字]
+王道考研/CSKAOYAN.COM
+进栈操作
+内存
+top
+top 
+top = -1
+data[9]
+data[8]
+data[7]
+data[6]
+data[5]
+data[4]
+data[3]
+data[2]
+data[1]
+data[0]
+a
+top = 0
+b
+top = 1
+等价
+注意：错误写法！
+
+[嵌入图片：page005_img1.png]
+
+[嵌入图片：page005_img2.png]
+
+[嵌入图片：page005_img3.png]
+
+[嵌入图片：page005_img4.png]
+
+[嵌入图片：page005_img5.png]
+
+[嵌入图片：page005_img6.png]
+
+[嵌入图片：page005_img7.png]
+
+[嵌入图片：page005_img8.png]
+
+[嵌入图片：page005_img9.png]
+
+[嵌入图片：page005_img10.png]
+
+[嵌入图片：page005_img11.png]
+
+[嵌入图片：page005_img12.png]
+
+[嵌入图片：page005_img13.png]
+
+[嵌入图片：page005_img14.png]
+
+[⚠️ 建议在复习资料中贴图]
+[渲染图路径] d:\fnfyu\projects\408\cs408-review\extracted\ds\第三章 栈、队列和数组\3.1.2_栈的顺序存储实现\pages\page-005.png
+[原因] 含 14 张嵌入图片
+
+==================================================
+第 6 页（共 12 页）
+==================================================
+
+[文字]
+王道考研/CSKAOYAN.COM
+进栈操作
+内存
+top
+top 
+top = 9
+data[9]
+data[8]
+data[7]
+data[6]
+data[5]
+data[4]
+data[3]
+data[2]
+data[1]
+data[0]
+a
+b
+等价
+c
+e
+f
+g
+h
+i
+j
+k
+
+[嵌入图片：page006_img1.png]
+
+[嵌入图片：page006_img2.png]
+
+[嵌入图片：page006_img3.png]
+
+[嵌入图片：page006_img4.png]
+
+[嵌入图片：page006_img5.png]
+
+[嵌入图片：page006_img6.png]
+
+[嵌入图片：page006_img7.png]
+
+[嵌入图片：page006_img8.png]
+
+[嵌入图片：page006_img9.png]
+
+[嵌入图片：page006_img10.png]
+
+[⚠️ 建议在复习资料中贴图]
+[渲染图路径] d:\fnfyu\projects\408\cs408-review\extracted\ds\第三章 栈、队列和数组\3.1.2_栈的顺序存储实现\pages\page-006.png
+[原因] 含 10 张嵌入图片
+
+==================================================
+第 7 页（共 12 页）
+==================================================
+
+[文字]
+王道考研/CSKAOYAN.COM
+出栈操作
+内存
+top
+top 
+top = 9
+data[9]
+data[8]
+data[7]
+data[6]
+data[5]
+data[4]
+data[3]
+data[2]
+data[1]
+data[0]
+a
+b
+c
+e
+f
+g
+h
+i
+j
+k
+x k
+top = 8
+数据还残留
+在内存中，
+只是逻辑上
+被删除了
+等价
+注意：错误写法！
+
+[嵌入图片：page007_img1.png]
+
+[嵌入图片：page007_img2.png]
+
+[嵌入图片：page007_img3.png]
+
+[嵌入图片：page007_img4.png]
+
+[嵌入图片：page007_img5.png]
+
+[嵌入图片：page007_img6.png]
+
+[嵌入图片：page007_img7.png]
+
+[嵌入图片：page007_img8.png]
+
+[嵌入图片：page007_img9.png]
+
+[嵌入图片：page007_img10.png]
+
+[嵌入图片：page007_img11.png]
+
+[嵌入图片：page007_img12.png]
+
+[嵌入图片：page007_img13.png]
+
+[嵌入图片：page007_img14.png]
+
+[⚠️ 建议在复习资料中贴图]
+[渲染图路径] d:\fnfyu\projects\408\cs408-review\extracted\ds\第三章 栈、队列和数组\3.1.2_栈的顺序存储实现\pages\page-007.png
+[原因] 含 14 张嵌入图片
+
+==================================================
+第 8 页（共 12 页）
+==================================================
+
+[文字]
+王道考研/CSKAOYAN.COM
+读栈顶元素操作
+内存
+top
+top 
+data[9]
+data[8]
+data[7]
+data[6]
+data[5]
+data[4]
+data[3]
+data[2]
+data[1]
+data[0]
+a
+b
+c
+e
+f
+g
+h
+i
+j
+x 
+top = 8
+唯一区别
+
+[嵌入图片：page008_img1.png]
+
+[嵌入图片：page008_img2.png]
+
+[嵌入图片：page008_img3.png]
+
+[嵌入图片：page008_img4.png]
+
+[嵌入图片：page008_img5.png]
+
+[嵌入图片：page008_img6.png]
+
+[嵌入图片：page008_img7.png]
+
+[嵌入图片：page008_img8.png]
+
+[嵌入图片：page008_img9.png]
+
+[嵌入图片：page008_img10.png]
+
+[⚠️ 建议在复习资料中贴图]
+[渲染图路径] d:\fnfyu\projects\408\cs408-review\extracted\ds\第三章 栈、队列和数组\3.1.2_栈的顺序存储实现\pages\page-008.png
+[原因] 含 10 张嵌入图片
+
+==================================================
+第 9 页（共 12 页）
+==================================================
+
+[文字]
+王道考研/CSKAOYAN.COM
+另一种方式
+data[9]
+data[8]
+data[7]
+data[6]
+data[5]
+data[4]
+data[3]
+data[2]
+data[1]
+data[0]
+内存
+top
+top(4B)
+top = 0
+初始指向0
+空栈
+
+[嵌入图片：page009_img1.png]
+
+[嵌入图片：page009_img2.png]
+
+[嵌入图片：page009_img3.png]
+
+[嵌入图片：page009_img4.png]
+
+[嵌入图片：page009_img5.png]
+
+[嵌入图片：page009_img6.png]
+
+[嵌入图片：page009_img7.png]
+
+[嵌入图片：page009_img8.png]
+
+[嵌入图片：page009_img9.png]
+
+[嵌入图片：page009_img10.png]
+
+[嵌入图片：page009_img11.png]
+
+[⚠️ 建议在复习资料中贴图]
+[渲染图路径] d:\fnfyu\projects\408\cs408-review\extracted\ds\第三章 栈、队列和数组\3.1.2_栈的顺序存储实现\pages\page-009.png
+[原因] 含 11 张嵌入图片
+
+==================================================
+第 10 页（共 12 页）
+==================================================
+
+[文字]
+王道考研/CSKAOYAN.COM
+另一种方式
+data[9]
+data[8]
+data[7]
+data[6]
+data[5]
+data[4]
+data[3]
+data[2]
+data[1]
+data[0]
+内存
+top(4B)
+top = 5
+a
+b
+c
+d
+e
+top
+top 指向下一个
+可以插入的位置
+✅
+进栈
+出栈
+栈满的条件：top == MaxSize
+等价
+注意审题啊喂！
+顺序栈的缺点：
+栈的大小不可变
+
+[嵌入图片：page010_img1.png]
+
+[嵌入图片：page010_img2.png]
+
+[嵌入图片：page010_img3.png]
+
+[嵌入图片：page010_img4.png]
+
+[嵌入图片：page010_img5.png]
+
+[嵌入图片：page010_img6.png]
+
+[嵌入图片：page010_img7.png]
+
+[嵌入图片：page010_img8.png]
+
+[嵌入图片：page010_img9.png]
+
+[嵌入图片：page010_img10.png]
+
+[嵌入图片：page010_img11.png]
+
+[嵌入图片：page010_img12.png]
+
+[嵌入图片：page010_img13.png]
+
+[嵌入图片：page010_img14.png]
+
+[嵌入图片：page010_img15.png]
+
+[⚠️ 建议在复习资料中贴图]
+[渲染图路径] d:\fnfyu\projects\408\cs408-review\extracted\ds\第三章 栈、队列和数组\3.1.2_栈的顺序存储实现\pages\page-010.png
+[原因] 含 15 张嵌入图片
+
+==================================================
+第 11 页（共 12 页）
+==================================================
+
+[文字]
+王道考研/CSKAOYAN.COM
+共享栈
+data[9]
+data[8]
+data[7]
+data[6]
+data[5]
+data[4]
+data[3]
+data[2]
+data[1]
+data[0]
+内存
+top0
+a
+b
+c
+d
+e
+f
+g
+3
+2
+1
+top1
+两个栈共享同一片空间
+栈满的条件：top0 + 1 == top1
+
+[嵌入图片：page011_img1.png]
+
+[嵌入图片：page011_img2.png]
+
+[嵌入图片：page011_img3.png]
+
+[嵌入图片：page011_img4.png]
+
+[嵌入图片：page011_img5.png]
+
+[嵌入图片：page011_img6.png]
+
+[嵌入图片：page011_img7.png]
+
+[嵌入图片：page011_img8.png]
+
+[⚠️ 建议在复习资料中贴图]
+[渲染图路径] d:\fnfyu\projects\408\cs408-review\extracted\ds\第三章 栈、队列和数组\3.1.2_栈的顺序存储实现\pages\page-011.png
+[原因] 含 8 张嵌入图片
+
+==================================================
+第 12 页（共 12 页）
+==================================================
+
+[文字]
+王道考研/CSKAOYAN.COM
+知识回顾与重要考点
+都是O(1) 时间复杂度
+函数运行结束后系
+统自动回收内存
+声明栈时
+分配内存
+销？—— 清空、回收
+top=-1
+
+[嵌入图片：page012_img1.png]
+
+[嵌入图片：page012_img2.png]
+
+[嵌入图片：page012_img3.png]
+
+[嵌入图片：page012_img4.png]
+
+[嵌入图片：page012_img5.png]
+
+[嵌入图片：page012_img6.png]
+
+[嵌入图片：page012_img7.png]
+
+[嵌入图片：page012_img8.png]
+
+[嵌入图片：page012_img9.png]
+
+[嵌入图片：page012_img10.png]
+
+[⚠️ 建议在复习资料中贴图]
+[渲染图路径] d:\fnfyu\projects\408\cs408-review\extracted\ds\第三章 栈、队列和数组\3.1.2_栈的顺序存储实现\pages\page-012.png
+[原因] 含 10 张嵌入图片

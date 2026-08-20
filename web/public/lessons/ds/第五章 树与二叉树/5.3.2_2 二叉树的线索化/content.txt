@@ -1,0 +1,631 @@
+
+==================================================
+第 1 页（共 14 页）
+==================================================
+
+[文字]
+本节内容
+二叉树的
+线索化
+王道考研/CSKAOYAN.COM
+
+[嵌入图片：page001_img1.png]
+
+[嵌入图片：page001_img2.png]
+
+[嵌入图片：page001_img3.png]
+
+[⚠️ 建议在复习资料中贴图]
+[渲染图路径] d:\fnfyu\projects\408\cs408-review\extracted\ds\第五章 树与二叉树\5.3.2_2 二叉树的线索化\pages\page-001.png
+[原因] 含 3 张嵌入图片, 矢量图示为主
+
+==================================================
+第 2 页（共 14 页）
+==================================================
+
+[文字]
+王道考研/CSKAOYAN.COM
+知识总览
+
+[嵌入图片：page002_img1.png]
+
+[嵌入图片：page002_img2.png]
+
+[嵌入图片：page002_img3.png]
+
+[嵌入图片：page002_img4.png]
+
+[嵌入图片：page002_img5.png]
+
+[嵌入图片：page002_img6.png]
+
+[嵌入图片：page002_img7.png]
+
+[嵌入图片：page002_img8.png]
+
+[⚠️ 建议在复习资料中贴图]
+[渲染图路径] d:\fnfyu\projects\408\cs408-review\extracted\ds\第五章 树与二叉树\5.3.2_2 二叉树的线索化\pages\page-002.png
+[原因] 含 8 张嵌入图片, 矢量图示为主
+
+==================================================
+第 3 页（共 14 页）
+==================================================
+
+[文字]
+王道考研/CSKAOYAN.COM
+用土办法找到中序前驱
+中序遍历序列：D G B E A F C
+A
+B
+D
+G
+E
+C
+F
+5
+3
+1
+2
+4
+7
+6
+p
+q
+pre
+pre
+NULL
+ﬁnal
+最好改一个函数
+名，如findPre
+
+[嵌入图片：page003_img1.png]
+
+[嵌入图片：page003_img2.png]
+
+[嵌入图片：page003_img3.png]
+
+[嵌入图片：page003_img4.png]
+
+[嵌入图片：page003_img5.png]
+
+[嵌入图片：page003_img6.png]
+
+[嵌入图片：page003_img7.png]
+
+[嵌入图片：page003_img8.png]
+
+[嵌入图片：page003_img9.png]
+
+[嵌入图片：page003_img10.png]
+
+[嵌入图片：page003_img11.png]
+
+[⚠️ 建议在复习资料中贴图]
+[渲染图路径] d:\fnfyu\projects\408\cs408-review\extracted\ds\第五章 树与二叉树\5.3.2_2 二叉树的线索化\pages\page-003.png
+[原因] 含 11 张嵌入图片
+
+==================================================
+第 4 页（共 14 页）
+==================================================
+
+[文字]
+王道考研/CSKAOYAN.COM
+中序线索化
+A
+B
+D
+G
+E
+C
+F
+5
+3
+1
+2
+4
+7
+6
+q
+pre
+pre
+NULL
+* lchild
+ltag
+data
+rtag
+* rchild
+初步建成的树，
+ltag、rtag=0
+NULL
+最后还要检查pre 的
+rchild 是否为NULL，
+如果是，则令rtag=1
+
+[嵌入图片：page004_img1.png]
+
+[嵌入图片：page004_img2.png]
+
+[嵌入图片：page004_img3.png]
+
+[嵌入图片：page004_img4.png]
+
+[嵌入图片：page004_img5.png]
+
+[嵌入图片：page004_img6.png]
+
+[嵌入图片：page004_img7.png]
+
+[嵌入图片：page004_img8.png]
+
+[嵌入图片：page004_img9.png]
+
+[嵌入图片：page004_img10.png]
+
+[嵌入图片：page004_img11.png]
+
+[表格1]
+* lchild | ltag | data | rtag * | rchild
+
+[⚠️ 建议在复习资料中贴图]
+[渲染图路径] d:\fnfyu\projects\408\cs408-review\extracted\ds\第五章 树与二叉树\5.3.2_2 二叉树的线索化\pages\page-004.png
+[原因] 含 11 张嵌入图片, 含 1 个表格
+
+==================================================
+第 5 页（共 14 页）
+==================================================
+
+[文字]
+王道考研/CSKAOYAN.COM
+中序线索化
+* lchild
+ltag
+data
+rtag
+* rchild
+初步建成的树，
+ltag、rtag=0
+
+[嵌入图片：page005_img1.png]
+
+[嵌入图片：page005_img2.png]
+
+[嵌入图片：page005_img3.png]
+
+[嵌入图片：page005_img4.png]
+
+[嵌入图片：page005_img5.png]
+
+[嵌入图片：page005_img6.png]
+
+[嵌入图片：page005_img7.png]
+
+[嵌入图片：page005_img8.png]
+
+[嵌入图片：page005_img9.png]
+
+[嵌入图片：page005_img10.png]
+
+[嵌入图片：page005_img11.png]
+
+[嵌入图片：page005_img12.png]
+
+[表格1]
+* lchild | ltag | data | rtag | * rchild
+
+[⚠️ 建议在复习资料中贴图]
+[渲染图路径] d:\fnfyu\projects\408\cs408-review\extracted\ds\第五章 树与二叉树\5.3.2_2 二叉树的线索化\pages\page-005.png
+[原因] 含 12 张嵌入图片, 含 1 个表格
+
+==================================================
+第 6 页（共 14 页）
+==================================================
+
+[文字]
+王道考研/CSKAOYAN.COM
+中序线索二叉树
+0
+A
+0
+0
+B
+0
+0
+C
+1
+1
+D
+0
+1
+E
+1
+1
+F
+1
+1
+G
+1
+NULL
+NULL
+对应tag位为1时，
+表示指针是“线索”
+对应tag位为0时，表
+示指针指向其孩子
+
+[嵌入图片：page006_img1.png]
+
+[嵌入图片：page006_img2.png]
+
+[嵌入图片：page006_img3.png]
+
+[嵌入图片：page006_img4.png]
+
+[嵌入图片：page006_img5.png]
+
+[嵌入图片：page006_img6.png]
+
+[嵌入图片：page006_img7.png]
+
+[表格1]
+ | 0 | A | 0 | 
+
+[表格2]
+ | 0 | B | 0
+
+[表格3]
+ | 0 | C | 1
+
+[表格4]
+ | 1 | D | 0 | 
+
+[表格5]
+1 | E | 1
+
+[表格6]
+1 | F | 1
+
+[表格7]
+ | 1 | G | 1
+
+[⚠️ 建议在复习资料中贴图]
+[渲染图路径] d:\fnfyu\projects\408\cs408-review\extracted\ds\第五章 树与二叉树\5.3.2_2 二叉树的线索化\pages\page-006.png
+[原因] 含 7 张嵌入图片, 含 7 个表格
+
+==================================================
+第 7 页（共 14 页）
+==================================================
+
+[文字]
+王道考研/CSKAOYAN.COM
+中序线索化（王道教材版）
+思考：为什么pre 参数是引用
+类型？
+思考：处理遍历的最后一个结
+点时，为什么没有判断rchild
+是否为NULL？
+答：中序遍历的最后一个结点
+右孩子指针必为空。
+
+[嵌入图片：page007_img1.png]
+
+[嵌入图片：page007_img2.png]
+
+[嵌入图片：page007_img3.png]
+
+[嵌入图片：page007_img4.png]
+
+[嵌入图片：page007_img5.png]
+
+[嵌入图片：page007_img6.png]
+
+[嵌入图片：page007_img7.png]
+
+[嵌入图片：page007_img8.png]
+
+[嵌入图片：page007_img9.png]
+
+[⚠️ 建议在复习资料中贴图]
+[渲染图路径] d:\fnfyu\projects\408\cs408-review\extracted\ds\第五章 树与二叉树\5.3.2_2 二叉树的线索化\pages\page-007.png
+[原因] 含 9 张嵌入图片
+
+==================================================
+第 8 页（共 14 页）
+==================================================
+
+[文字]
+王道考研/CSKAOYAN.COM
+先序线索化
+q
+pre
+* lchild
+ltag
+data
+rtag
+* rchild
+初步建成的树，
+ltag、rtag=0
+A
+B
+D
+G
+E
+C
+F
+1
+2
+3
+4
+5
+6
+7
+爱滴魔力转圈圈
+
+[嵌入图片：page008_img1.png]
+
+[嵌入图片：page008_img2.png]
+
+[嵌入图片：page008_img3.png]
+
+[嵌入图片：page008_img4.png]
+
+[嵌入图片：page008_img5.png]
+
+[嵌入图片：page008_img6.png]
+
+[嵌入图片：page008_img7.png]
+
+[嵌入图片：page008_img8.png]
+
+[嵌入图片：page008_img9.png]
+
+[嵌入图片：page008_img10.png]
+
+[嵌入图片：page008_img11.png]
+
+[表格1]
+* lchi | ld ltag | data | rtag | * rchild
+
+[⚠️ 建议在复习资料中贴图]
+[渲染图路径] d:\fnfyu\projects\408\cs408-review\extracted\ds\第五章 树与二叉树\5.3.2_2 二叉树的线索化\pages\page-008.png
+[原因] 含 11 张嵌入图片, 含 1 个表格
+
+==================================================
+第 9 页（共 14 页）
+==================================================
+
+[文字]
+王道考研/CSKAOYAN.COM
+先序线索化
+q
+pre
+* lchild
+ltag
+data
+rtag
+* rchild
+初步建成的树，
+ltag、rtag=0
+A
+B
+D
+G
+E
+C
+F
+1
+2
+3
+4
+5
+6
+7
+
+[嵌入图片：page009_img1.png]
+
+[嵌入图片：page009_img2.png]
+
+[嵌入图片：page009_img3.png]
+
+[嵌入图片：page009_img4.png]
+
+[嵌入图片：page009_img5.png]
+
+[嵌入图片：page009_img6.png]
+
+[嵌入图片：page009_img7.png]
+
+[嵌入图片：page009_img8.png]
+
+[嵌入图片：page009_img9.png]
+
+[嵌入图片：page009_img10.png]
+
+[表格1]
+* lchil | d ltag | data | rtag | * rchild
+
+[⚠️ 建议在复习资料中贴图]
+[渲染图路径] d:\fnfyu\projects\408\cs408-review\extracted\ds\第五章 树与二叉树\5.3.2_2 二叉树的线索化\pages\page-009.png
+[原因] 含 10 张嵌入图片, 含 1 个表格
+
+==================================================
+第 10 页（共 14 页）
+==================================================
+
+[文字]
+王道考研/CSKAOYAN.COM
+先序线索化
+* lchild
+ltag
+data
+rtag
+* rchild
+初步建成的树，
+ltag、rtag=0
+
+[嵌入图片：page010_img1.png]
+
+[嵌入图片：page010_img2.png]
+
+[嵌入图片：page010_img3.png]
+
+[嵌入图片：page010_img4.png]
+
+[嵌入图片：page010_img5.png]
+
+[嵌入图片：page010_img6.png]
+
+[嵌入图片：page010_img7.png]
+
+[嵌入图片：page010_img8.png]
+
+[嵌入图片：page010_img9.png]
+
+[嵌入图片：page010_img10.png]
+
+[嵌入图片：page010_img11.png]
+
+[表格1]
+* lchild | ltag | data | rtag | * rchild
+
+[⚠️ 建议在复习资料中贴图]
+[渲染图路径] d:\fnfyu\projects\408\cs408-review\extracted\ds\第五章 树与二叉树\5.3.2_2 二叉树的线索化\pages\page-010.png
+[原因] 含 11 张嵌入图片, 含 1 个表格
+
+==================================================
+第 11 页（共 14 页）
+==================================================
+
+[文字]
+王道考研/CSKAOYAN.COM
+先序线索化（王道教材Style）
+爱滴魔力转圈圈
+
+[嵌入图片：page011_img1.png]
+
+[嵌入图片：page011_img2.png]
+
+[嵌入图片：page011_img3.png]
+
+[嵌入图片：page011_img4.png]
+
+[嵌入图片：page011_img5.png]
+
+[嵌入图片：page011_img6.png]
+
+[嵌入图片：page011_img7.png]
+
+[嵌入图片：page011_img8.png]
+
+[嵌入图片：page011_img9.png]
+
+[嵌入图片：page011_img10.png]
+
+[⚠️ 建议在复习资料中贴图]
+[渲染图路径] d:\fnfyu\projects\408\cs408-review\extracted\ds\第五章 树与二叉树\5.3.2_2 二叉树的线索化\pages\page-011.png
+[原因] 含 10 张嵌入图片
+
+==================================================
+第 12 页（共 14 页）
+==================================================
+
+[文字]
+王道考研/CSKAOYAN.COM
+后序线索化
+* lchild
+ltag
+data
+rtag
+* rchild
+初步建成的树，
+ltag、rtag=0
+
+[嵌入图片：page012_img1.png]
+
+[嵌入图片：page012_img2.png]
+
+[嵌入图片：page012_img3.png]
+
+[嵌入图片：page012_img4.png]
+
+[嵌入图片：page012_img5.png]
+
+[嵌入图片：page012_img6.png]
+
+[嵌入图片：page012_img7.png]
+
+[嵌入图片：page012_img8.png]
+
+[嵌入图片：page012_img9.png]
+
+[嵌入图片：page012_img10.png]
+
+[嵌入图片：page012_img11.png]
+
+[表格1]
+* lchild | ltag | data | rtag | * rchild
+
+[⚠️ 建议在复习资料中贴图]
+[渲染图路径] d:\fnfyu\projects\408\cs408-review\extracted\ds\第五章 树与二叉树\5.3.2_2 二叉树的线索化\pages\page-012.png
+[原因] 含 11 张嵌入图片, 含 1 个表格
+
+==================================================
+第 13 页（共 14 页）
+==================================================
+
+[文字]
+王道考研/CSKAOYAN.COM
+后序线索化（王道教材Style）
+爱滴魔力转圈圈
+
+[嵌入图片：page013_img1.png]
+
+[嵌入图片：page013_img2.png]
+
+[嵌入图片：page013_img3.png]
+
+[嵌入图片：page013_img4.png]
+
+[嵌入图片：page013_img5.png]
+
+[嵌入图片：page013_img6.png]
+
+[嵌入图片：page013_img7.png]
+
+[嵌入图片：page013_img8.png]
+
+[嵌入图片：page013_img9.png]
+
+[嵌入图片：page013_img10.png]
+
+[嵌入图片：page013_img11.png]
+
+[⚠️ 建议在复习资料中贴图]
+[渲染图路径] d:\fnfyu\projects\408\cs408-review\extracted\ds\第五章 树与二叉树\5.3.2_2 二叉树的线索化\pages\page-013.png
+[原因] 含 11 张嵌入图片
+
+==================================================
+第 14 页（共 14 页）
+==================================================
+
+[文字]
+王道考研/CSKAOYAN.COM
+知识回顾与重要考点
+
+[嵌入图片：page014_img1.png]
+
+[嵌入图片：page014_img2.png]
+
+[嵌入图片：page014_img3.png]
+
+[嵌入图片：page014_img4.png]
+
+[嵌入图片：page014_img5.png]
+
+[嵌入图片：page014_img6.png]
+
+[嵌入图片：page014_img7.png]
+
+[嵌入图片：page014_img8.png]
+
+[⚠️ 建议在复习资料中贴图]
+[渲染图路径] d:\fnfyu\projects\408\cs408-review\extracted\ds\第五章 树与二叉树\5.3.2_2 二叉树的线索化\pages\page-014.png
+[原因] 含 8 张嵌入图片, 矢量图示为主
