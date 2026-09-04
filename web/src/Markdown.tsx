@@ -38,7 +38,7 @@ export function Markdown({
   if (!source?.trim()) return null
 
   const components: Components = {
-    img: ({ src, alt, ...rest }) => (
+    img: ({ src, alt, ...rest }: React.ImgHTMLAttributes<HTMLImageElement>)=> (
       <img src={resolveImgSrc(src, subjectId)} alt={alt ?? ''} loading="lazy" {...rest} />
     ),
   }
