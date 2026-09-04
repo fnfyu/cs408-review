@@ -1,777 +1,106 @@
 import { useEffect, useMemo, useState } from 'react'
-import { GITEE_REPO, giteeLessonUrl, giteeSubjectUrl } from './gitee'
-import { Markdown } from './Markdown'
-import type {
-  Catalog,
-  Chapter,
-  KnowledgePoint,
-  LessonItem,
-  LessonsCatalog,
-  SubjectData,
-  View,
-} from './types'
+import type { KnowledgeBase, Node, SubjectId, Tier } from './kbTypes'
+import './index.css'
 
-const cache = new Map<string, SubjectData>()
-
-/** 兼容 Vite base（如 `./`），让静态包可放在任意子目录 */
-function assetUrl(path: string) {
-  if (!path.startsWith('/')) return path
-  const base = import.meta.env.BASE_URL || '/'
-  return `${base.replace(/\/?$/, '/')}${path.slice(1)}`
+const subjectMeta: Record<SubjectId, {name:string; short:string}> = {
+  ds:{name:'数据结构',short:'DS'}, co:{name:'计算机组成原理',short:'CO'},
+  os:{name:'操作系统',short:'OS'}, cn:{name:'计算机网络',short:'CN'},
 }
+const tierOrder: Tier[] = ['S','A','B','C']
+const tierText: Record<Tier,string> = {S:'核心综合',A:'高频重点',B:'常规考点',C:'低频保留',D:'非主复习链'}
+type SourceTopic={id:string;code:string;title:string;pages:number;source_status:string;status_reason:string;variant_role:string;source_relpath:string;archive:string;asset_path?:string;node_ids:string[]}
+type CompatIndex={original_chapters:Record<SubjectId,{id:string;order:number;title:string;topics:SourceTopic[]}[]>}
 
-async function loadSubject(id: string, dataFile: string): Promise<SubjectData> {
-  if (cache.has(id)) return cache.get(id)!
-  const res = await fetch(assetUrl(dataFile))
-  const data = (await res.json()) as SubjectData
-  cache.set(id, data)
-  return data
-}
+function assetUrl(path:string){ const base=import.meta.env.BASE_URL||'/'; return `${base.replace(/\/?$/, '/')}${path.replace(/^\//,'')}` }
 
-function masteryClass(m: string) {
-  if (m === '熟练掌握') return 'badge hard'
-  if (m === '掌握') return 'badge master'
-  return 'badge'
-}
+export default function App(){
+  const [kb,setKb]=useState<KnowledgeBase|null>(null)
+  const [compat,setCompat]=useState<CompatIndex|null>(null)
+  const [subject,setSubject]=useState<SubjectId|'all'>('all')
+  const [tier,setTier]=useState<Tier|'all'>('all')
+  const [q,setQ]=useState('')
+  const [selected,setSelected]=useState<string|null>(null)
+  const [view,setView]=useState<'cards'|'outline'|'sources'|'progress'>('cards')
+  const [done,setDone]=useState<Record<string,boolean>>(()=>{ try{return JSON.parse(localStorage.getItem('cs408-progress')||'{}')}catch{return {}} })
+  const [subDone,setSubDone]=useState<Record<string,boolean>>(()=>{ try{return JSON.parse(localStorage.getItem('cs408-subtopic-progress')||'{}')}catch{return {}} })
+  const [reviewMode,setReviewMode]=useState(false)
 
-function findChapter(subject: SubjectData, chapterId: string): Chapter | undefined {
-  return subject.chapters.find((c) => c.id === chapterId)
-}
+  useEffect(()=>{ Promise.all([fetch(assetUrl('/data/408-kb.json')).then(r=>r.json()),fetch(assetUrl('/data/compat-index.json')).then(r=>r.json())]).then(([k,c])=>{setKb(k);setCompat(c)}).catch(console.error) },[])
 
-function findPoint(chapter: Chapter, pointId: string): KnowledgePoint | undefined {
-  for (const s of chapter.sections) {
-    const p = s.points.find((x) => x.id === pointId)
-    if (p) return p
-  }
-  return undefined
-}
-
-function extractQuizBlocks(md: string): { q: string; a: string }[] {
-  if (!md) return []
-  const parts = md.split(/(?=【例题】|^\*\*题)/m).filter((p) => p.trim())
-  return parts.map((block) => {
-    const ansIdx = block.search(/\*\*解[：:]|\*\*答案[：:]|解题过程/)
-    if (ansIdx < 0) return { q: block.trim(), a: '' }
-    return { q: block.slice(0, ansIdx).trim(), a: block.slice(ansIdx).trim() }
-  }).filter((x) => x.q.length > 20)
-}
-
-export default function App() {
-  const [catalog, setCatalog] = useState<Catalog | null>(null)
-  const [lessons, setLessons] = useState<LessonsCatalog | null>(null)
-  const [view, setView] = useState<View>({ kind: 'home' })
-  const [subject, setSubject] = useState<SubjectData | null>(null)
-  const [loading, setLoading] = useState(false)
-  const [q, setQ] = useState('')
-  const [revealed, setRevealed] = useState<Record<number, boolean>>({})
-
-  useEffect(() => {
-    fetch(assetUrl('/data/catalog.json'))
-      .then((r) => r.json())
-      .then(setCatalog)
-      .catch(console.error)
-    fetch(assetUrl('/data/lessons.json'))
-      .then((r) => r.json())
-      .then(setLessons)
-      .catch(console.error)
-  }, [])
-
-  useEffect(() => {
-    if (view.kind === 'home' || view.kind === 'search') {
-      setSubject(null)
-      return
-    }
-    if (!catalog) return
-    const meta = catalog.subjects.find((s) => s.id === view.subjectId)
-    if (!meta) return
-    setLoading(true)
-    loadSubject(meta.id, meta.dataFile)
-      .then(setSubject)
-      .finally(() => setLoading(false))
-  }, [view, catalog])
-
-  const searchHits = useMemo(() => {
-    if (view.kind !== 'search' || !catalog || !q.trim()) return []
-    const needle = q.trim().toLowerCase()
-    const hits: { subjectId: string; subjectName: string; chapterId: string; chapterTitle: string; point: KnowledgePoint }[] = []
-    for (const s of [...cache.values()]) {
-      for (const ch of s.chapters) {
-        for (const sec of ch.sections) {
-          for (const p of sec.points) {
-            const blob = `${p.title}\n${p.plain}\n${p.bodyMd}`.toLowerCase()
-            if (blob.includes(needle)) {
-              hits.push({
-                subjectId: s.id,
-                subjectName: s.name,
-                chapterId: ch.id,
-                chapterTitle: ch.title,
-                point: p,
-              })
-            }
-          }
-        }
-      }
-    }
-    return hits.slice(0, 80)
-  }, [view, q, subject, catalog])
-
-  // preload all subjects for search
-  useEffect(() => {
-    if (!catalog) return
-    catalog.subjects.forEach((s) => {
-      loadSubject(s.id, s.dataFile).catch(() => {})
+  const filtered=useMemo(()=>{
+    if(!kb) return []
+    const needle=q.trim().toLowerCase()
+    return kb.nodes.filter(n=>{
+      if(subject!=='all'&&n.subject!==subject) return false
+      if(tier!=='all'&&n.importance.tier!==tier) return false
+      if(!needle) return true
+      const blob=[n.title,...n.search_tags,...n.subtopics.map(s=>s.name),...n.subtopics.flatMap(s=>s.core||[]),...n.problem_templates,...n.common_traps,...n.question_refs.map(x=>`${x.subtopic||''} ${x.evidence||''}`)].join('\n').toLowerCase()
+      return blob.includes(needle)
     })
-  }, [catalog])
+  },[kb,subject,tier,q])
 
-  const subjectColor = subject?.color ?? 'var(--accent)'
+  const node=kb?.nodes.find(n=>n.node_id===selected)||null
+  const toggleDone=(id:string)=>setDone(prev=>{const next={...prev,[id]:!prev[id]};localStorage.setItem('cs408-progress',JSON.stringify(next));return next})
+  const toggleSubDone=(id:string)=>setSubDone(prev=>{const next={...prev,[id]:!prev[id]};localStorage.setItem('cs408-subtopic-progress',JSON.stringify(next));return next})
+  const completedCount=kb?kb.nodes.filter(n=>done[n.node_id]).length:0
+  const completedSubtopicCount=kb?kb.nodes.flatMap(n=>n.subtopics).filter(s=>s.subtopic_id&&subDone[s.subtopic_id]).length:0
+  if(!kb) return <div className="loading">加载 408 知识库…</div>
 
-  return (
-    <div className="app-shell" style={{ ['--subject' as string]: subjectColor }}>
-      <header className="topbar">
-        <button className="brand" onClick={() => setView({ kind: 'home' })}>
-          <span className="brand-kicker">CS 408 Exam Prep</span>
-          <span className="brand-title">408 考点复习台</span>
-        </button>
-        <form
-          className="search-box"
-          onSubmit={(e) => {
-            e.preventDefault()
-            if (q.trim()) setView({ kind: 'search', q: q.trim() })
-          }}
-        >
-          <span aria-hidden>⌕</span>
-          <input
-            value={q}
-            onChange={(e) => setQ(e.target.value)}
-            placeholder="搜索考点、概念、算法…"
-          />
-        </form>
-      </header>
-
-      {view.kind === 'home' && catalog && (
-        <>
-          <section className="hero">
-            <div>
-              <h1>把王道四门课件，收成可检索的考点台</h1>
-              <p>
-                覆盖操作系统、数据结构、组成原理、计算机网络。每条考点按 exam-prep 结构整理：定义、通俗理解、考察形式、记忆技巧与经典例题；并可翻看 351 节课件原文。
-              </p>
-            </div>
-            <div className="hero-meta">
-              <div>
-                <strong>{catalog.subjects.reduce((a, s) => a + s.stats.points, 0)}</strong>
-                结构化考点
-              </div>
-              <div>
-                <strong>
-                  {catalog.subjects.reduce((a, s) => a + s.stats.chapters, 0)}
-                </strong>
-                章节 · 图示 {catalog.subjects.reduce((a, s) => a + s.stats.figures, 0)} · 课件{' '}
-                {lessons
-                  ? Object.values(lessons.subjects).reduce(
-                      (a, chs) => a + Object.values(chs).reduce((b, ls) => b + ls.length, 0),
-                      0,
-                    )
-                  : 351}
-              </div>
-            </div>
-            <p className="point-plain" style={{ marginTop: 14 }}>
-              原课件不托管在本站，需要 PPT/PDF 时到{' '}
-              <a className="ext-link" href={GITEE_REPO} target="_blank" rel="noreferrer">
-                Gitee · computer-408
-              </a>{' '}
-              按需打开（仅供学习整理）。
-            </p>
-          </section>
-          <div className="subject-grid">
-            {catalog.subjects.map((s) => (
-              <button
-                key={s.id}
-                className="subject-card"
-                style={{ ['--subject' as string]: s.color }}
-                onClick={() =>
-                  setView({
-                    kind: 'chapter',
-                    subjectId: s.id,
-                    chapterId: '',
-                    tab: 'points',
-                  })
-                }
-              >
-                <div className="short">{s.short}</div>
-                <h2>{s.name}</h2>
-                <div className="stats">
-                  <span>{s.stats.chapters} 章</span>
-                  <span>{s.stats.points} 考点</span>
-                  <span>{s.stats.figures} 图</span>
-                </div>
-              </button>
-            ))}
-          </div>
-        </>
-      )}
-
-      {(view.kind === 'subject' ||
-        view.kind === 'chapter' ||
-        view.kind === 'point' ||
-        view.kind === 'quiz' ||
-        view.kind === 'lesson') &&
-        (loading || !subject ? (
-          <div className="loading">加载科目内容…</div>
-        ) : (
-          <SubjectWorkspace
-            subject={subject}
-            view={view}
-            setView={setView}
-            revealed={revealed}
-            setRevealed={setRevealed}
-            subjectLessons={lessons?.subjects[subject.id] ?? {}}
-          />
-        ))}
-
-      {view.kind === 'search' && (
-        <div className="panel">
-          <button className="back-btn" onClick={() => setView({ kind: 'home' })}>← 返回首页</button>
-          <div className="panel-head">
-            <div>
-              <h1>搜索：{view.q}</h1>
-              <p>在已加载科目中匹配标题与正文（最多 80 条）</p>
-            </div>
-          </div>
-          {searchHits.length === 0 ? (
-            <div className="empty">暂无结果，换个关键词试试。</div>
-          ) : (
-            searchHits.map((h) => (
-              <div
-                key={h.point.id + h.subjectId}
-                className="point-card"
-                onClick={() =>
-                  setView({
-                    kind: 'point',
-                    subjectId: h.subjectId,
-                    chapterId: h.chapterId,
-                    pointId: h.point.id,
-                  })
-                }
-              >
-                <div className="point-top">
-                  <h3>{h.point.title}</h3>
-                  <span className={masteryClass(h.point.mastery)}>{h.point.mastery}</span>
-                </div>
-                <p className="point-plain">
-                  {h.subjectName} · {h.chapterTitle}
-                </p>
-                <p className="point-plain">{h.point.plain}</p>
-              </div>
-            ))
-          )}
-        </div>
-      )}
-    </div>
-  )
+  return <main className="shell">
+    <header className="topbar">
+      <button className="brand" onClick={()=>setSelected(null)}><span>CS 408 EXAM PREP</span><strong>408 考点复习台 v3</strong></button>
+      <input className="search" value={q} onChange={e=>{setQ(e.target.value);setSelected(null)}} placeholder="搜索考点、算法、协议、真题关键词…"/>
+    </header>
+    {node?<Detail node={node} onBack={()=>setSelected(null)} done={!!done[node.node_id]} onToggleDone={()=>toggleDone(node.node_id)} subDone={subDone} onToggleSubDone={toggleSubDone}/>:<>
+      <section className="hero"><div><h1>按大纲与真题重新组织 408</h1><p>课件负责解释，真题负责定权。保留原始课件来源，同时把考点、真题、解题模型和易错点组织到同一条学习链。</p></div><div className="hero-stats"><b>{kb.stats.nodes}</b><span>核心知识簇</span><b>{kb.stats.subtopics}</b><span>细粒度子考点</span><b>{kb.source_audit_summary?.total_files ?? 350}</b><span>原始课件</span><b>{kb.source_audit_summary?.representative_files_bundled ?? 122}</b><span>可直接打开PDF</span><b>{completedCount}</b><span>已完成知识簇</span><b>{completedSubtopicCount}</b><span>已完成子考点</span></div></section>
+      <section className="filters">
+        <div className="filter-row"><button className={subject==='all'?'active':''} onClick={()=>setSubject('all')}>全部科目</button>{(Object.keys(subjectMeta) as SubjectId[]).map(id=><button key={id} className={subject===id?'active':''} onClick={()=>setSubject(id)}>{subjectMeta[id].name}</button>)}</div>
+        <div className="filter-row"><button className={tier==='all'?'active':''} onClick={()=>setTier('all')}>全部等级</button>{tierOrder.map(t=><button key={t} className={`${tier===t?'active':''} tier-${t}`} onClick={()=>setTier(t)}>{t} · {tierText[t]}</button>)}</div>
+        <div className="filter-row view-toggle"><button className={view==='cards'?'active':''} onClick={()=>setView('cards')}>卡片</button><button className={view==='outline'?'active':''} onClick={()=>setView('outline')}>知识章节</button><button className={view==='sources'?'active':''} onClick={()=>setView('sources')}>原课件目录</button><button className={view==='progress'?'active':''} onClick={()=>setView('progress')}>复习进度</button><span className="result-count">{view==='sources'?'350 份原始课件':`${filtered.length} 个知识簇`}</span></div>
+      </section>
+      {view==='cards'?<section className="node-grid">{filtered.map(n=><NodeCard key={n.node_id} node={n} onClick={()=>setSelected(n.node_id)}/>)}</section>:view==='outline'?<Outline nodes={filtered} onOpen={setSelected}/>:view==='sources'?<SourceOutline compat={compat} subject={subject} query={q} onOpen={setSelected}/>:<ProgressView nodes={filtered} done={done} onOpen={setSelected} onToggle={toggleDone}/>} 
+      {view!=='sources'&&filtered.length===0&&<div className="empty">没有匹配结果。</div>}
+    </>}
+  </main>
 }
 
-function SubjectWorkspace({
-  subject,
-  view,
-  setView,
-  revealed,
-  setRevealed,
-  subjectLessons,
-}: {
-  subject: SubjectData
-  view: View
-  setView: (v: View) => void
-  revealed: Record<number, boolean>
-  setRevealed: (v: Record<number, boolean>) => void
-  subjectLessons: Record<string, LessonItem[]>
-}) {
-  const chapterId =
-    view.kind === 'chapter' || view.kind === 'point'
-      ? view.chapterId || subject.chapters[0]?.id
-      : subject.chapters[0]?.id
-  const chapter = findChapter(subject, chapterId!)
-  const tab =
-    view.kind === 'chapter'
-      ? view.tab ?? 'points'
-      : view.kind === 'point'
-        ? 'points'
-        : 'points'
 
-  useEffect(() => {
-    if (view.kind === 'chapter' && !view.chapterId && subject.chapters[0]) {
-      setView({
-        kind: 'chapter',
-        subjectId: subject.id,
-        chapterId: subject.chapters[0].id,
-        tab: 'points',
-      })
-    }
-  }, [view, subject, setView])
 
-  if (view.kind === 'lesson') {
-    return (
-      <LessonReader
-        subject={subject}
-        lessonId={view.lessonId}
-        subjectLessons={subjectLessons}
-        setView={setView}
-      />
-    )
-  }
-
-  if (view.kind === 'quiz') {
-    const blocks = subject.chapters.flatMap((ch) =>
-      extractQuizBlocks(ch.examples).map((b) => ({ ...b, chapter: ch.title })),
-    )
-    return (
-      <div className="panel">
-        <button
-          className="back-btn"
-          onClick={() =>
-            setView({
-              kind: 'chapter',
-              subjectId: subject.id,
-              chapterId: subject.chapters[0].id,
-              tab: 'points',
-            })
-          }
-        >
-          ← 返回 {subject.name}
-        </button>
-        <div className="panel-head">
-          <div>
-            <h1>{subject.name} · 例题练习</h1>
-            <p>来自各章「经典例题」，先自测再揭晓解析</p>
-          </div>
-        </div>
-        {blocks.length === 0 ? (
-          <div className="empty">本章集中例题较少，请到各章「例题」页查看。</div>
-        ) : (
-          blocks.map((b, i) => (
-            <div className="quiz-card" key={i}>
-              <div className="point-plain" style={{ marginBottom: 8 }}>
-                {b.chapter}
-              </div>
-              <Markdown source={b.q} subjectId={subject.id} />
-              <div className="quiz-actions">
-                <button
-                  className="primary"
-                  onClick={() => setRevealed({ ...revealed, [i]: !revealed[i] })}
-                >
-                  {revealed[i] ? '收起解析' : '查看解析'}
-                </button>
-              </div>
-              {revealed[i] && b.a && (
-                <div className="detail-box" style={{ marginTop: 12 }}>
-                  <h4>解析</h4>
-                  <Markdown source={b.a} subjectId={subject.id} />
-                </div>
-              )}
-            </div>
-          ))
-        )}
-      </div>
-    )
-  }
-
-  if (view.kind === 'point' && chapter) {
-    const point = findPoint(chapter, view.pointId)
-    if (!point) return <div className="empty">未找到考点</div>
-    return (
-      <div className="layout">
-        <ChapterNav subject={subject} chapterId={chapter.id} setView={setView} />
-        <div className="panel">
-          <button
-            className="back-btn"
-            onClick={() =>
-              setView({
-                kind: 'chapter',
-                subjectId: subject.id,
-                chapterId: chapter.id,
-                tab: 'points',
-              })
-            }
-          >
-            ← 返回章节
-          </button>
-          <div className="panel-head">
-            <div>
-              <h1>{point.title}</h1>
-              <p>{chapter.title}</p>
-            </div>
-            <span className={masteryClass(point.mastery)}>{point.mastery}</span>
-          </div>
-          <div className="detail-grid">
-            <div className="detail-box">
-              <h4>通俗理解</h4>
-              <p>{point.plain}</p>
-            </div>
-            <div className="detail-box">
-              <h4>考察形式</h4>
-              <p>{point.examForm}</p>
-            </div>
-            {point.memoryTip && (
-              <div className="detail-box">
-                <h4>记忆技巧</h4>
-                <p>{point.memoryTip}</p>
-              </div>
-            )}
-            <div className="detail-box">
-              <h4>定义与要点</h4>
-              <Markdown source={point.bodyMd} subjectId={subject.id} />
-            </div>
-            <div className="detail-box">
-              <h4>小结</h4>
-              <p>{point.summary}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    )
-  }
-
-  if (!chapter) return <div className="empty">暂无章节</div>
-
-  const allLessons = Object.entries(subjectLessons).flatMap(([chName, ls]) =>
-    ls.map((l) => ({ ...l, chapterName: chName })),
-  )
-
-  return (
-    <div className="layout">
-      <ChapterNav subject={subject} chapterId={chapter.id} setView={setView} />
-      <div className="panel">
-        <div className="panel-head">
-          <div>
-            <button className="back-btn" onClick={() => setView({ kind: 'home' })}>
-              ← 全部科目
-            </button>
-            <h1>{chapter.title}</h1>
-            <p>{subject.name}</p>
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 8, alignItems: 'flex-end' }}>
-            <div className="tabs">
-              {(
-                [
-                  ['points', '考点'],
-                  ['examples', '例题'],
-                  ['pitfalls', '易错'],
-                  ['slides', '图示'],
-                  ['lessons', '课件原文'],
-                ] as const
-              ).map(([id, label]) => (
-                <button
-                  key={id}
-                  className={`tab ${tab === id ? 'active' : ''}`}
-                  onClick={() =>
-                    setView({
-                      kind: 'chapter',
-                      subjectId: subject.id,
-                      chapterId: chapter.id,
-                      tab: id,
-                    })
-                  }
-                >
-                  {label}
-                </button>
-              ))}
-            </div>
-            <button
-              className="ghost"
-              onClick={() => setView({ kind: 'quiz', subjectId: subject.id })}
-            >
-              全科例题练习
-            </button>
-          </div>
-        </div>
-
-        {tab === 'points' && (
-          <>
-            {chapter.overview && (
-              <div className="detail-box" style={{ marginBottom: 18 }}>
-                <h4>考情速览</h4>
-                <Markdown source={chapter.overview} subjectId={subject.id} />
-              </div>
-            )}
-            {chapter.sections.map((sec) => (
-              <div className="section-block" key={sec.id}>
-                <h2>{sec.title}</h2>
-                {sec.intro && <Markdown source={sec.intro} subjectId={subject.id} />}
-                {sec.points.map((p) => (
-                  <div
-                    key={p.id}
-                    className="point-card"
-                    onClick={() =>
-                      setView({
-                        kind: 'point',
-                        subjectId: subject.id,
-                        chapterId: chapter.id,
-                        pointId: p.id,
-                      })
-                    }
-                  >
-                    <div className="point-top">
-                      <h3>{p.title}</h3>
-                      <span className={masteryClass(p.mastery)}>{p.mastery}</span>
-                    </div>
-                    <p className="point-plain">{p.plain}</p>
-                  </div>
-                ))}
-              </div>
-            ))}
-          </>
-        )}
-
-        {tab === 'examples' && (
-          <div className="detail-box">
-            <h4>经典例题</h4>
-            {chapter.examples ? (
-              <Markdown source={chapter.examples} subjectId={subject.id} />
-            ) : (
-              <div className="empty">本章暂无集中例题</div>
-            )}
-          </div>
-        )}
-
-        {tab === 'pitfalls' && (
-          <div className="detail-box">
-            <h4>易错点速记</h4>
-            {chapter.pitfalls ? (
-              <Markdown source={chapter.pitfalls} subjectId={subject.id} />
-            ) : (
-              <div className="empty">本章暂无易错点摘要</div>
-            )}
-          </div>
-        )}
-
-        {tab === 'slides' && (
-          <div>
-            <p className="point-plain" style={{ marginBottom: 12 }}>
-              重点图示 {subject.figures.length} 张。完整课件文字见「课件原文」页签（共{' '}
-              {allLessons.length} 节）。
-            </p>
-            <div className="figure-grid">
-              {subject.figures.map((src) => {
-                const href = assetUrl(src)
-                return (
-                  <figure key={src}>
-                    <a href={href} target="_blank" rel="noreferrer">
-                      <img src={href} alt="" loading="lazy" />
-                    </a>
-                    <figcaption>{src.split('/').pop()}</figcaption>
-                  </figure>
-                )
-              })}
-            </div>
-          </div>
-        )}
-
-        {tab === 'lessons' && (
-          <div>
-            <p className="point-plain" style={{ marginBottom: 12 }}>
-              来自 Gitee 王道课件全文提取（PDF→文本）。点进可按页阅读文字；整页幻灯片图未打进静态包。
-              原件目录：{' '}
-              <a
-                className="ext-link"
-                href={giteeSubjectUrl(subject.id)}
-                target="_blank"
-                rel="noreferrer"
-                onClick={(e) => e.stopPropagation()}
-              >
-                在 Gitee 打开本科目课件
-              </a>
-            </p>
-            {Object.entries(subjectLessons).map(([chName, ls]) => (
-              <div className="section-block" key={chName}>
-                <h2>{chName}</h2>
-                {ls.map((l) => (
-                  <div
-                    key={l.id}
-                    className="point-card"
-                    onClick={() =>
-                      setView({ kind: 'lesson', subjectId: subject.id, lessonId: l.id })
-                    }
-                  >
-                    <div className="point-top">
-                      <h3>{l.title}</h3>
-                      <span className="badge">
-                        {l.pages} 页 · 图示页 {l.visualPages}
-                      </span>
-                    </div>
-                    <p className="point-plain">{l.preview}</p>
-                    <a
-                      className="ext-link"
-                      href={giteeLessonUrl(l.id)}
-                      target="_blank"
-                      rel="noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      Gitee 原件目录 ↗
-                    </a>
-                  </div>
-                ))}
-              </div>
-            ))}
-            {allLessons.length === 0 && <div className="empty">课件原文尚未就绪</div>}
-          </div>
-        )}
-      </div>
-    </div>
-  )
+function ProgressView({nodes,done,onOpen,onToggle}:{nodes:Node[];done:Record<string,boolean>;onOpen:(id:string)=>void;onToggle:(id:string)=>void}){
+  const ordered=[...nodes].sort((a,b)=>({S:0,A:1,B:2,C:3,D:4}[a.importance.tier]-({S:0,A:1,B:2,C:3,D:4}[b.importance.tier])))
+  const complete=ordered.filter(n=>done[n.node_id]).length
+  const pct=ordered.length?Math.round(complete/ordered.length*100):0
+  return <section className="progress-view"><div className="progress-summary"><div><b>{complete}/{ordered.length}</b><span>当前筛选范围已完成</span></div><div className="progress-bar"><i style={{width:`${pct}%`}}/></div><strong>{pct}%</strong></div><div className="progress-list">{ordered.map(n=><div className={`progress-row ${done[n.node_id]?'done':''}`} key={n.node_id}><button className="check" onClick={()=>onToggle(n.node_id)}>{done[n.node_id]?'✓':'○'}</button><button className="progress-open" onClick={()=>onOpen(n.node_id)}><span className={`tier-badge tier-${n.importance.tier}`}>{n.importance.tier}</span><b>{n.title}</b><small>{n.review_summary.must_master.slice(0,4).join(' · ')}</small></button></div>)}</div></section>
 }
 
-function LessonReader({
-  subject,
-  lessonId,
-  subjectLessons,
-  setView,
-}: {
-  subject: SubjectData
-  lessonId: string
-  subjectLessons: Record<string, LessonItem[]>
-  setView: (v: View) => void
-}) {
-  const lesson = Object.values(subjectLessons)
-    .flat()
-    .find((l) => l.id === lessonId)
-  const [pages, setPages] = useState<{ page: number; text: string }[]>([])
-  const [pageIdx, setPageIdx] = useState(0)
-  const [loading, setLoading] = useState(true)
-  const [imgOk, setImgOk] = useState(true)
-
-  useEffect(() => {
-    if (!lesson) return
-    setLoading(true)
-    setImgOk(true)
-    fetch(assetUrl(lesson.pagesUrl))
-      .then((r) => r.json())
-      .then((data: { pages: { page: number; text: string }[] }) => {
-        setPages(data.pages || [])
-        setPageIdx(0)
-      })
-      .finally(() => setLoading(false))
-  }, [lesson])
-
-  if (!lesson) return <div className="empty">未找到该课件</div>
-  const cur = pages[pageIdx]
-  const pageNum = cur?.page ?? pageIdx + 1
-  const imgSrc = assetUrl(
-    `/lesson-pages/${lesson.id}/pages/page-${String(pageNum).padStart(3, '0')}.png`,
-  )
-
-  return (
-    <div className="panel">
-      <button
-        className="back-btn"
-        onClick={() =>
-          setView({
-            kind: 'chapter',
-            subjectId: subject.id,
-            chapterId: subject.chapters[0].id,
-            tab: 'lessons',
-          })
-        }
-      >
-        ← 返回课件目录
-      </button>
-      <div className="panel-head">
-        <div>
-          <h1>{lesson.title}</h1>
-          <p>
-            {subject.name} · 共 {pages.length || lesson.pages} 页 ·{' '}
-            <a
-              className="ext-link"
-              href={giteeLessonUrl(lesson.id)}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Gitee 原件目录
-            </a>
-          </p>
-        </div>
-        <div className="tabs">
-          <button
-            className="tab"
-            disabled={pageIdx <= 0}
-            onClick={() => {
-              setImgOk(true)
-              setPageIdx((i) => Math.max(0, i - 1))
-            }}
-          >
-            上一页
-          </button>
-          <span className="badge">
-            {pageNum} / {pages.length || '…'}
-          </span>
-          <button
-            className="tab"
-            disabled={pageIdx >= pages.length - 1}
-            onClick={() => {
-              setImgOk(true)
-              setPageIdx((i) => Math.min(pages.length - 1, i + 1))
-            }}
-          >
-            下一页
-          </button>
-        </div>
-      </div>
-      {loading ? (
-        <div className="loading">加载课件原文…</div>
-      ) : (
-        <div className="detail-grid">
-          <div className="detail-box slide-page">
-            <h4>第 {pageNum} 页 · 课件图</h4>
-            {imgOk ? (
-              <a href={imgSrc} target="_blank" rel="noreferrer">
-                <img
-                  className="slide-img"
-                  src={imgSrc}
-                  alt={`第 ${pageNum} 页`}
-                  onError={() => setImgOk(false)}
-                />
-              </a>
-            ) : (
-              <p className="point-plain">本页图尚未渲染完成，可先看下方文字；全量渲染进行中。</p>
-            )}
-          </div>
-          <div className="detail-box">
-            <h4>提取文字</h4>
-            <pre className="slide-text">{cur?.text || '（本页主要为图示，文字较少）'}</pre>
-          </div>
-        </div>
-      )}
-    </div>
-  )
+function SourceOutline({compat,subject,query,onOpen}:{compat:CompatIndex|null;subject:SubjectId|'all';query:string;onOpen:(id:string)=>void}){
+  if(!compat) return <div className="loading">加载原课件目录…</div>
+  const needle=query.trim().toLowerCase()
+  const subjects=(Object.keys(subjectMeta) as SubjectId[]).filter(s=>subject==='all'||subject===s)
+  return <section className="source-outline">{subjects.map(sid=>{
+    const chapters=(compat.original_chapters[sid]||[]).map(ch=>({...ch,topics:ch.topics.filter(t=>!needle||`${t.code} ${t.title} ${t.status_reason}`.toLowerCase().includes(needle))})).filter(ch=>ch.topics.length)
+    if(!chapters.length) return null
+    return <div className="source-subject" key={sid}><h2>{subjectMeta[sid].name} · 原课件</h2>{chapters.map(ch=><details key={ch.id} open={!!needle}><summary>{ch.title}<span>{ch.topics.length} 份</span></summary><div className="source-topic-list">{ch.topics.map(t=><div className="source-topic" key={t.id}><div><b>{t.code} {t.title}</b><small>{t.pages}页 · {t.source_status}{t.variant_role!=='single'?` · ${t.variant_role}`:''}</small></div><div className="source-topic-actions">{t.asset_path&&<a href={assetUrl(t.asset_path)} target="_blank" rel="noreferrer">PDF</a>}{t.node_ids.map(id=><button key={id} onClick={()=>onOpen(id)}>对应考点</button>)}</div></div>)}</div></details>)}</div>
+  })}</section>
 }
 
-function ChapterNav({
-  subject,
-  chapterId,
-  setView,
-}: {
-  subject: SubjectData
-  chapterId: string
-  setView: (v: View) => void
-}) {
-  return (
-    <aside className="sidebar">
-      <h3>{subject.short} 章节</h3>
-      {subject.chapters.map((ch) => (
-        <button
-          key={ch.id}
-          className={`nav-item ${ch.id === chapterId ? 'active' : ''}`}
-          onClick={() =>
-            setView({
-              kind: 'chapter',
-              subjectId: subject.id,
-              chapterId: ch.id,
-              tab: 'points',
-            })
-          }
-        >
-          {ch.title}
-        </button>
-      ))}
-    </aside>
-  )
+function Outline({nodes,onOpen}:{nodes:Node[];onOpen:(id:string)=>void}){
+  const groups=(Object.keys(subjectMeta) as SubjectId[]).map(subject=>({subject,nodes:nodes.filter(n=>n.subject===subject)})).filter(g=>g.nodes.length)
+  return <section className="outline">{groups.map(g=><div className="outline-subject" key={g.subject}><h2>{subjectMeta[g.subject].name}</h2>{g.nodes.map((n,i)=><button key={n.node_id} onClick={()=>onOpen(n.node_id)} className="outline-row"><span className="outline-num">{String(i+1).padStart(2,'0')}</span><span className="outline-main"><b>{n.title}</b><small>{n.review_summary.must_master.slice(0,5).join(' · ')}</small></span><span className={`tier-badge tier-${n.importance.tier}`}>{n.importance.tier}</span></button>)}</div>)}</section>
 }
+
+function NodeCard({node,onClick}:{node:Node;onClick:()=>void}){return <button className="node-card" onClick={onClick}><div className="card-head"><span className={`tier-badge tier-${node.importance.tier}`}>{node.importance.tier}</span><span className="subject-chip">{subjectMeta[node.subject].short}</span></div><h2>{node.title}</h2><p>{node.review_summary.must_master.slice(0,4).join(' · ')}</p><div className="card-meta"><span>{node.subtopics.length} 子考点</span><span>{node.question_refs.length} 真题证据</span><span>{node.source_refs.length} 来源页</span></div></button>}
+
+function Detail({node,onBack,done,onToggleDone,subDone,onToggleSubDone}:{node:Node;onBack:()=>void;done:boolean;onToggleDone:()=>void;subDone:Record<string,boolean>;onToggleSubDone:(id:string)=>void}){return <article className="detail"><div className="detail-toolbar"><button className="back" onClick={onBack}>← 返回知识库</button><button className={`done-button ${done?'is-done':''}`} onClick={onToggleDone}>{done?'✓ 已完成':'标记已完成'}</button></div><header className="detail-head"><div><div className="eyebrow">{subjectMeta[node.subject].name} · {node.importance.finality==='stable'?'证据较稳定':'权重仍可继续校正'}</div><h1>{node.title}</h1><p>{node.importance.reason}</p></div><div className={`big-tier tier-${node.importance.tier}`}>{node.importance.tier}</div></header>
+  <Section title="必须掌握"><div className="chips">{node.review_summary.must_master.map(x=><span key={x}>{x}</span>)}</div></Section>
+  <Section title={`子考点 · ${node.subtopics.filter(s=>s.subtopic_id&&subDone[s.subtopic_id]).length}/${node.subtopics.length} 已完成`}><div className="subtopics">{node.subtopics.map((s,i)=>{const sid=s.subtopic_id||`${node.node_id}-sub-${i+1}`;const sd=!!subDone[sid];return <div className={`subtopic ${sd?'subtopic-done':''}`} key={sid}><div className="subtopic-title"><button className="sub-check" onClick={()=>onToggleSubDone(sid)}>{sd?'✓':'○'}</button><b>{s.name}</b>{s.tier&&<span className={`mini-tier tier-${s.tier}`}>{s.tier}</span>}</div>{s.core&&<ul>{s.core.map(x=><li key={x}>{x}</li>)}</ul>}{(s.model||s.visual_model)&&<p className="model">{s.model||s.visual_model}</p>}{(s.source_ref_ids?.length||s.question_ref_ids?.length)?<div className="sub-links">{s.source_ref_ids?.length?<span>课件来源 {s.source_ref_ids.length}</span>:null}{s.question_ref_ids?.length?<span>真题证据 {s.question_ref_ids.length}</span>:null}</div>:null}</div>})}</div></Section>
+  <Section title="图示怎么读"><List items={node.visual_explanations}/></Section>
+  <Section title="标准解题模型"><ol className="steps">{node.problem_templates.map((x,i)=><li key={i}>{x}</li>)}</ol></Section>
+  <Section title="高频陷阱"><List items={node.common_traps}/></Section>
+  <Section title="真题证据"><div className="evidence-list">{node.question_refs.map((q,i)=><div className="evidence" key={q.ref_id||i}><div className="evidence-head"><b>{q.subtopic||'相关真题'}</b>{q.scope&&<span>{q.scope}</span>}</div><p>{q.evidence}</p>{q.note&&<small>{q.note}</small>}</div>)}</div></Section>
+  <Section title="课件来源"><div className="source-list">{node.source_refs.map((s,i)=><div className="source" key={s.ref_id||i}><code>{s.pdf}</code><div className="source-actions">{s.page&&<b>p.{s.page}</b>}{s.asset_path&&<a href={`${assetUrl(s.asset_path)}${s.page?`#page=${s.page}`:''}`} target="_blank" rel="noreferrer">打开原课件</a>}</div>{s.preview&&<p>{s.preview}</p>}{(s.source_status||s.variant_role)&&<small>{s.source_status||''}{s.variant_role?` · ${s.variant_role}`:''}</small>}</div>)}</div></Section>
+  {node.review_summary.can_compress?.length>0&&<Section title="可压缩复习"><div className="chips muted">{node.review_summary.can_compress.map(x=><span key={x}>{x}</span>)}</div></Section>}
+  <Section title="搜索标签"><div className="chips muted">{node.search_tags.slice(0,18).map(x=><span key={x}>{x}</span>)}</div></Section>
+</article>}
+function Section({title,children}:{title:string;children:React.ReactNode}){return <section className="section"><h3>{title}</h3>{children}</section>}
+function List({items}:{items:string[]}){return items.length?<ul className="clean-list">{items.map((x,i)=><li key={i}>{x}</li>)}</ul>:<p className="muted-text">待继续补充。</p>}

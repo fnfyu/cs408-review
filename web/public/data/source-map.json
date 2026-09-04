@@ -1,0 +1,1100 @@
+{
+  "【课件】数据结构基础考点讲解/第七章 查找/7.1 查找的基本概念.pdf": {
+    "subject": "ds",
+    "archive": "struct(1).zip",
+    "asset_path": "sources/ds/deab12d7a550.pdf",
+    "pages": 10,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】数据结构基础考点讲解/第七章 查找/7.2.1 顺序查找.pdf": {
+    "subject": "ds",
+    "archive": "struct(1).zip",
+    "asset_path": "sources/ds/b3fee63f7124.pdf",
+    "pages": 20,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】数据结构基础考点讲解/第七章 查找/7.2.2 折半查找.pdf": {
+    "subject": "ds",
+    "archive": "struct(1).zip",
+    "asset_path": "sources/ds/c2d427af4d97.pdf",
+    "pages": 47,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】数据结构基础考点讲解/第七章 查找/7.2.3 分块查找.pdf": {
+    "subject": "ds",
+    "archive": "struct(1).zip",
+    "asset_path": "sources/ds/3811358d1e41.pdf",
+    "pages": 24,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】数据结构基础考点讲解/第七章 查找/7.3.1 二叉排序树.pdf": {
+    "subject": "ds",
+    "archive": "struct(1).zip",
+    "asset_path": "sources/ds/a5bbd7d87972.pdf",
+    "pages": 21,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】数据结构基础考点讲解/第七章 查找/7.3.2_1 平衡二叉树.pdf": {
+    "subject": "ds",
+    "archive": "struct(1).zip",
+    "asset_path": "sources/ds/4e8ba0e7d77c.pdf",
+    "pages": 30,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】操作系统基础考点讲解/第三章 内存管理/3.1.3_1 基本分页存储管理的基本概念.pdf": {
+    "subject": "os",
+    "archive": "os(1).zip",
+    "asset_path": "sources/os/934e2c713cf2.pdf",
+    "pages": 18,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】操作系统基础考点讲解/第三章 内存管理/3.1.3_2 基本地址变换机构.pdf": {
+    "subject": "os",
+    "archive": "os(1).zip",
+    "asset_path": "sources/os/33fc715ea3ac.pdf",
+    "pages": 11,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】操作系统基础考点讲解/第三章 内存管理/3.1.3_3 具有快表的地址变换机构.pdf": {
+    "subject": "os",
+    "archive": "os(1).zip",
+    "asset_path": "sources/os/5603a8ebf373.pdf",
+    "pages": 10,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】组成原理基础考点讲解/第四章 指令系统/4.1.1+2+3  指令的基本格式.pdf": {
+    "subject": "co",
+    "archive": "compose(1).zip",
+    "asset_path": "sources/co/d78f8ac3c4f3.pdf",
+    "pages": 23,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】组成原理基础考点讲解/第四章 指令系统/4.1.4 扩展操作码指令格式.pdf": {
+    "subject": "co",
+    "archive": "compose(1).zip",
+    "asset_path": "sources/co/7030d49073de.pdf",
+    "pages": 7,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】组成原理基础考点讲解/第四章 指令系统/4.2.2_1 数据寻񗐁.pdf": {
+    "subject": "co",
+    "archive": "compose(1).zip",
+    "asset_path": "sources/co/9ef1e4975f2a.pdf",
+    "pages": 14,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】组成原理基础考点讲解/第四章 指令系统/4.2.2_2 数据寻񗐂_偏移寻址.pdf": {
+    "subject": "co",
+    "archive": "compose(1).zip",
+    "asset_path": "sources/co/474b7ecc682e.pdf",
+    "pages": 21,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】操作系统基础考点讲解/第二章 进程与线程/2.3.1 同步与互斥的基本概念.pdf": {
+    "subject": "os",
+    "archive": "os(1).zip",
+    "asset_path": "sources/os/3afadab71c73.pdf",
+    "pages": 8,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】操作系统基础考点讲解/第二章 进程与线程/2.3.2_1 进程互斥的软件实现方法.pdf": {
+    "subject": "os",
+    "archive": "os(1).zip",
+    "asset_path": "sources/os/14b1b56c99c3.pdf",
+    "pages": 15,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】操作系统基础考点讲解/第二章 进程与线程/2.3.2_2 进程互斥的硬件实现方法.pdf": {
+    "subject": "os",
+    "archive": "os(1).zip",
+    "asset_path": "sources/os/85de9b671ec4.pdf",
+    "pages": 7,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】操作系统基础考点讲解/第二章 进程与线程/2.3.3 互斥锁.pdf": {
+    "subject": "os",
+    "archive": "os(1).zip",
+    "asset_path": "sources/os/a672d224449f.pdf",
+    "pages": 4,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】操作系统基础考点讲解/第二章 进程与线程/2.3.4_1 信号量机制.pdf": {
+    "subject": "os",
+    "archive": "os(1).zip",
+    "asset_path": "sources/os/26ea80c4bb9e.pdf",
+    "pages": 8,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】组成原理基础考点讲解/第五章 中央处理器/5.2 指令执行过程.pdf": {
+    "subject": "co",
+    "archive": "compose(1).zip",
+    "asset_path": "sources/co/0620a0ca7799.pdf",
+    "pages": 13,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】组成原理基础考点讲解/第五章 中央处理器/5.3_1 数据通路-单总线结构.pdf": {
+    "subject": "co",
+    "archive": "compose(1).zip",
+    "asset_path": "sources/co/6930d29cd4aa.pdf",
+    "pages": 14,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】数据结构基础考点讲解/第八章 排序/8.3.2 快速排序.pdf": {
+    "subject": "ds",
+    "archive": "struct(1).zip",
+    "asset_path": "sources/ds/ee9dbd4af4ed.pdf",
+    "pages": 132,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】数据结构基础考点讲解/第八章 排序/8.5.1 归并排序.pdf": {
+    "subject": "ds",
+    "archive": "struct(1).zip",
+    "asset_path": "sources/ds/717c7a6c0a99.pdf",
+    "pages": 44,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】数据结构基础考点讲解/第八章 排序/8.7.5 最佳归并树.pdf": {
+    "subject": "ds",
+    "archive": "struct(1).zip",
+    "asset_path": "sources/ds/7e01ea6f9474.pdf",
+    "pages": 24,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】组成原理基础考点讲解/第三章 存储系统/3.5.3 Cache和主存的映射方式.pdf": {
+    "subject": "co",
+    "archive": "compose(1).zip",
+    "asset_path": "sources/co/324a54870de9.pdf",
+    "pages": 28,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】组成原理基础考点讲解/第三章 存储系统/3.5.4 Cache替换算法.pdf": {
+    "subject": "co",
+    "archive": "compose(1).zip",
+    "asset_path": "sources/co/49d19b5f5c5e.pdf",
+    "pages": 29,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】组成原理基础考点讲解/第三章 存储系统/3.5.5 Cache写策略.pdf": {
+    "subject": "co",
+    "archive": "compose(1).zip",
+    "asset_path": "sources/co/3b6b866ebc60.pdf",
+    "pages": 12,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】操作系统基础考点讲解/第三章 内存管理/3.2.4 页面置换算法.pdf": {
+    "subject": "os",
+    "archive": "os(1).zip",
+    "asset_path": "sources/os/07f9e4916594.pdf",
+    "pages": 15,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】数据结构基础考点讲解/第二章 线性表/2.3.4_循环链表.pdf": {
+    "subject": "ds",
+    "archive": "struct(1).zip",
+    "asset_path": "sources/ds/82b86454676a.pdf",
+    "pages": 11,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】数据结构基础考点讲解/第二章 线性表/2.3.2_1_单链表的插入删除.pdf": {
+    "subject": "ds",
+    "archive": "struct(1).zip",
+    "asset_path": "sources/ds/0cf50bf28607.pdf",
+    "pages": 26,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】数据结构基础考点讲解/第二章 线性表/2.3.3_双链表.pdf": {
+    "subject": "ds",
+    "archive": "struct(1).zip",
+    "asset_path": "sources/ds/80fed552d94f.pdf",
+    "pages": 9,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】数据结构基础考点讲解/第二章 线性表/2.2.2_1_顺序表的插入删除.pdf": {
+    "subject": "ds",
+    "archive": "struct(1).zip",
+    "asset_path": "sources/ds/546d7610598c.pdf",
+    "pages": 10,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】数据结构基础考点讲解/第二章 线性表/2.2.2_2_顺序表的查找.pdf": {
+    "subject": "ds",
+    "archive": "struct(1).zip",
+    "asset_path": "sources/ds/e82c0674e1de.pdf",
+    "pages": 13,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】数据结构基础考点讲解/第二章 线性表/2.2.1_顺序表的定义.pdf": {
+    "subject": "ds",
+    "archive": "struct(1).zip",
+    "asset_path": "sources/ds/05ffcb969688.pdf",
+    "pages": 11,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】数据结构基础考点讲解/第三章 栈、队列和数组/3.1.2_栈的顺序存储实现.pdf": {
+    "subject": "ds",
+    "archive": "struct(1).zip",
+    "asset_path": "sources/ds/038c21472b45.pdf",
+    "pages": 12,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】数据结构基础考点讲解/第三章 栈、队列和数组/3.2.2_队列的顺序实现.pdf": {
+    "subject": "ds",
+    "archive": "struct(1).zip",
+    "asset_path": "sources/ds/4b918fce403a.pdf",
+    "pages": 16,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】数据结构基础考点讲解/第三章 栈、队列和数组/3.2.3_队列的链式实现.pdf": {
+    "subject": "ds",
+    "archive": "struct(1).zip",
+    "asset_path": "sources/ds/3735c78b20e9.pdf",
+    "pages": 11,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】数据结构基础考点讲解/第三章 栈、队列和数组/3.4.1~3.4.4_特殊矩阵的压缩存储.pdf": {
+    "subject": "ds",
+    "archive": "struct(1).zip",
+    "asset_path": "sources/ds/387df55ae4e3.pdf",
+    "pages": 24,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】数据结构基础考点讲解/第三章 栈、队列和数组/3.3.1_栈在括号匹配中的应用.pdf": {
+    "subject": "ds",
+    "archive": "struct(1).zip",
+    "asset_path": "sources/ds/8f565d7ce7d6.pdf",
+    "pages": 10,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】数据结构基础考点讲解/第五章 树与二叉树/5.2.2 二叉树的存储结构.pdf": {
+    "subject": "ds",
+    "archive": "struct(1).zip",
+    "asset_path": "sources/ds/e3c89181778b.pdf",
+    "pages": 12,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】数据结构基础考点讲解/第五章 树与二叉树/5.3.2_2 二叉树的线索化.pdf": {
+    "subject": "ds",
+    "archive": "struct(1).zip",
+    "asset_path": "sources/ds/2a5ea9eea0f5.pdf",
+    "pages": 14,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】数据结构基础考点讲解/第五章 树与二叉树/5.2.1_2 二叉树的性质.pdf": {
+    "subject": "ds",
+    "archive": "struct(1).zip",
+    "asset_path": "sources/ds/51f937a2390a.pdf",
+    "pages": 8,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】数据结构基础考点讲解/第五章 树与二叉树/5.3.1_1 二叉树的先中后序遍历.pdf": {
+    "subject": "ds",
+    "archive": "struct(1).zip",
+    "asset_path": "sources/ds/3c93a6e4fcd1.pdf",
+    "pages": 22,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】数据结构基础考点讲解/第五章 树与二叉树/5.3.2_1 线索二叉树的概念.pdf": {
+    "subject": "ds",
+    "archive": "struct(1).zip",
+    "asset_path": "sources/ds/1d487d43bbaf.pdf",
+    "pages": 12,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】数据结构基础考点讲解/第六章 图/6.2.1 邻接矩阵法.pdf": {
+    "subject": "ds",
+    "archive": "struct(1).zip",
+    "asset_path": "sources/ds/d7f73ac5b9ae.pdf",
+    "pages": 12,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】数据结构基础考点讲解/第六章 图/6.2.5 图的基本操作.pdf": {
+    "subject": "ds",
+    "archive": "struct(1).zip",
+    "asset_path": "sources/ds/6146566b4d7e.pdf",
+    "pages": 17,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】数据结构基础考点讲解/第六章 图/6.1.1 图的基本概念.pdf": {
+    "subject": "ds",
+    "archive": "struct(1).zip",
+    "asset_path": "sources/ds/58e3cbca1a69.pdf",
+    "pages": 27,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】数据结构基础考点讲解/第六章 图/6.4.1 最小生成树.pdf": {
+    "subject": "ds",
+    "archive": "struct(1).zip",
+    "asset_path": "sources/ds/dd1a28e87d91.pdf",
+    "pages": 87,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】数据结构基础考点讲解/第六章 图/6.2.3+6.2.4 十字链表、邻接多重表.pdf": {
+    "subject": "ds",
+    "archive": "struct(1).zip",
+    "asset_path": "sources/ds/7b02bf320990.pdf",
+    "pages": 11,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】组成原理基础考点讲解/第二章 数据的表示和运算/2.2.4_2 带符号整数的乘法运算原理.pdf": {
+    "subject": "co",
+    "archive": "compose(1).zip",
+    "asset_path": "sources/co/9400fa311e47.pdf",
+    "pages": 24,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】组成原理基础考点讲解/第二章 数据的表示和运算/2.2.4_4 无符号整数的除法运算原理.pdf": {
+    "subject": "co",
+    "archive": "compose(1).zip",
+    "asset_path": "sources/co/41526f7690e5.pdf",
+    "pages": 24,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】组成原理基础考点讲解/第二章 数据的表示和运算/2.2.4_5 带符号整数（补码）的除法运算原理.pdf": {
+    "subject": "co",
+    "archive": "compose(1).zip",
+    "asset_path": "sources/co/7489f434b213.pdf",
+    "pages": 15,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】组成原理基础考点讲解/第二章 数据的表示和运算/2.3.2_4 浮点数的加减运算(溢出问题).pdf": {
+    "subject": "co",
+    "archive": "compose(1).zip",
+    "asset_path": "sources/co/b4f23e152c77.pdf",
+    "pages": 8,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】组成原理基础考点讲解/第二章 数据的表示和运算/2.3.1_3+4 浮点数的表示范围、几种特殊状态.pdf": {
+    "subject": "co",
+    "archive": "compose(1).zip",
+    "asset_path": "sources/co/22e358069d54.pdf",
+    "pages": 21,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】组成原理基础考点讲解/第三章 存储系统/3.2.1 SRAM񔣍RAM.pdf": {
+    "subject": "co",
+    "archive": "compose(1).zip",
+    "asset_path": "sources/co/931f55d4ad5c.pdf",
+    "pages": 15,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】组成原理基础考点讲解/第三章 存储系统/3.2.4 双端口RAM和多模块存储器.pdf": {
+    "subject": "co",
+    "archive": "compose(1).zip",
+    "asset_path": "sources/co/a64f57deae84.pdf",
+    "pages": 22,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】组成原理基础考点讲解/第三章 存储系统/3.2.0+3.2.3 主存储器的基本组成.pdf": {
+    "subject": "co",
+    "archive": "compose(1).zip",
+    "asset_path": "sources/co/d1fe095cac87.pdf",
+    "pages": 11,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】组成原理基础考点讲解/第三章 存储系统/3.3 主存储器񎃬PU的连接.pdf": {
+    "subject": "co",
+    "archive": "compose(1).zip",
+    "asset_path": "sources/co/44a927fbe6a7.pdf",
+    "pages": 28,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】组成原理基础考点讲解/第四章 指令系统/4.3.4 函数调用的机器级表示.pdf": {
+    "subject": "co",
+    "archive": "compose(1).zip",
+    "asset_path": "sources/co/61466ff7ac6b.pdf",
+    "pages": 60,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】组成原理基础考点讲解/第四章 指令系统/4.3.2 选择语句的机器级表示.pdf": {
+    "subject": "co",
+    "archive": "compose(1).zip",
+    "asset_path": "sources/co/6894f541c8b2.pdf",
+    "pages": 11,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】组成原理基础考点讲解/第四章 指令系统/4.3.3 循环语句的机器级表示.pdf": {
+    "subject": "co",
+    "archive": "compose(1).zip",
+    "asset_path": "sources/co/3535949e37ac.pdf",
+    "pages": 5,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】组成原理基础考点讲解/第四章 指令系统/4.3.1_1 高级语言与机器级代码之间的对应.pdf": {
+    "subject": "co",
+    "archive": "compose(1).zip",
+    "asset_path": "sources/co/048964a03e39.pdf",
+    "pages": 12,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】组成原理基础考点讲解/第四章 指令系统/4.3.1_2 常用的x86汇编指令.pdf": {
+    "subject": "co",
+    "archive": "compose(1).zip",
+    "asset_path": "sources/co/475263755f6c.pdf",
+    "pages": 7,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】组成原理基础考点讲解/第五章 中央处理器/5.6_1 指令流水线的基本概念和性能指标.pdf": {
+    "subject": "co",
+    "archive": "compose(1).zip",
+    "asset_path": "sources/co/67ba2fd20cc7.pdf",
+    "pages": 12,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】组成原理基础考点讲解/第五章 中央处理器/5.6_2 指令流水线的影响因素和分类.pdf": {
+    "subject": "co",
+    "archive": "compose(1).zip",
+    "asset_path": "sources/co/9e4917cbb409.pdf",
+    "pages": 17,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】组成原理基础考点讲解/第五章 中央处理器/5.6_3 五段式指令流水线.pdf": {
+    "subject": "co",
+    "archive": "compose(1).zip",
+    "asset_path": "sources/co/96220114a854.pdf",
+    "pages": 11,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】操作系统基础考点讲解/第二章 进程与线程/2.3.5_3 哲学家进餐问题.pdf": {
+    "subject": "os",
+    "archive": "os(1).zip",
+    "asset_path": "sources/os/3b382aae707a.pdf",
+    "pages": 11,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】操作系统基础考点讲解/第二章 进程与线程/2.4.1 死锁的概念.pdf": {
+    "subject": "os",
+    "archive": "os(1).zip",
+    "asset_path": "sources/os/2515aca02c86.pdf",
+    "pages": 10,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】操作系统基础考点讲解/第二章 进程与线程/2.2.1 调度的概念、层次.pdf": {
+    "subject": "os",
+    "archive": "os(1).zip",
+    "asset_path": "sources/os/ef7d03973448.pdf",
+    "pages": 10,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】操作系统基础考点讲解/第二章 进程与线程/2.3.5_1_2 多生产者-多消费者.pdf": {
+    "subject": "os",
+    "archive": "os(1).zip",
+    "asset_path": "sources/os/fe67d2882a51.pdf",
+    "pages": 10,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】操作系统基础考点讲解/第二章 进程与线程/2.1.6_2 线程的实现方式和多线程模型.pdf": {
+    "subject": "os",
+    "archive": "os(1).zip",
+    "asset_path": "sources/os/7710809b1244.pdf",
+    "pages": 13,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】操作系统基础考点讲解/第二章 进程与线程/2.4.3 死锁的处理策略—避免死锁.pdf": {
+    "subject": "os",
+    "archive": "os(1).zip",
+    "asset_path": "sources/os/fdc88f99fa1e.pdf",
+    "pages": 17,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】操作系统基础考点讲解/第二章 进程与线程/2.2.5_2 调度算法：时间片轮转、优先级、多级反馈队列.pdf": {
+    "subject": "os",
+    "archive": "os(1).zip",
+    "asset_path": "sources/os/570c08efae04.pdf",
+    "pages": 21,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】操作系统基础考点讲解/第二章 进程与线程/2.2.5_1 调度算法：先来先服务、最短作业优先、最高响应比优先.pdf": {
+    "subject": "os",
+    "archive": "os(1).zip",
+    "asset_path": "sources/os/ab42a52e643c.pdf",
+    "pages": 17,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】操作系统基础考点讲解/第二章 进程与线程/2.2.6 多处理机调度.pdf": {
+    "subject": "os",
+    "archive": "os(1).zip",
+    "asset_path": "sources/os/9ffb3ab7e668.pdf",
+    "pages": 11,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】操作系统基础考点讲解/第二章 进程与线程/2.2.3 调度的目标（调度算法的评价指标）.pdf": {
+    "subject": "os",
+    "archive": "os(1).zip",
+    "asset_path": "sources/os/7775df175771.pdf",
+    "pages": 10,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】操作系统基础考点讲解/第二章 进程与线程/2.4.2 死锁的处理策略—预防死锁.pdf": {
+    "subject": "os",
+    "archive": "os(1).zip",
+    "asset_path": "sources/os/d02ceb6b5ec0.pdf",
+    "pages": 8,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】操作系统基础考点讲解/第二章 进程与线程/2.4.4 死锁的处理策略—死锁的检测与解除.pdf": {
+    "subject": "os",
+    "archive": "os(1).zip",
+    "asset_path": "sources/os/fe3b035fb1fa.pdf",
+    "pages": 9,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】操作系统基础考点讲解/第四章 文件管理/4.1_5_逻辑结构VS物理结构.pdf": {
+    "subject": "os",
+    "archive": "os(1).zip",
+    "asset_path": "sources/os/d957cf8c7dcc.pdf",
+    "pages": 19,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】操作系统基础考点讲解/第四章 文件管理/4.1_4_文件的物理结构.pdf": {
+    "subject": "os",
+    "archive": "os(1).zip",
+    "asset_path": "sources/os/c1df77fcffff.pdf",
+    "pages": 30,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】操作系统基础考点讲解/第四章 文件管理/4.1_6_文件存储空间管理.pdf": {
+    "subject": "os",
+    "archive": "os(1).zip",
+    "asset_path": "sources/os/e7db69981301.pdf",
+    "pages": 20,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】操作系统基础考点讲解/第四章 文件管理/4.1_9_文件保护.pdf": {
+    "subject": "os",
+    "archive": "os(1).zip",
+    "asset_path": "sources/os/504c0dd10dfd.pdf",
+    "pages": 15,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】计算机网络基础考的讲解/第四章 网络层/4.2.3 子网划分与和子网掩码（有上课手稿）.pdf": {
+    "subject": "cn",
+    "archive": "net(1).zip",
+    "asset_path": "sources/cn/cb24c42408c1.pdf",
+    "pages": 16,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "primary_handwritten"
+  },
+  "【课件】计算机网络基础考的讲解/第四章 网络层/4.2.3 子网划分与和子网掩码（纯净版）.pdf": {
+    "subject": "cn",
+    "archive": "net(1).zip",
+    "asset_path": "sources/cn/abad7273c9aa.pdf",
+    "pages": 16,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "secondary_clean"
+  },
+  "【课件】计算机网络基础考的讲解/第四章 网络层/4.2.1 IPv4分组.pdf": {
+    "subject": "cn",
+    "archive": "net(1).zip",
+    "asset_path": "sources/cn/17840b0867b0.pdf",
+    "pages": 16,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】计算机网络基础考的讲解/第四章 网络层/4.2.5 路由聚合.pdf": {
+    "subject": "cn",
+    "archive": "net(1).zip",
+    "asset_path": "sources/cn/aac6c9b4b7bb.pdf",
+    "pages": 8,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】计算机网络基础考的讲解/第四章 网络层/4.2.4 无分类编址 CIDR.pdf": {
+    "subject": "cn",
+    "archive": "net(1).zip",
+    "asset_path": "sources/cn/ce216cf6a390.pdf",
+    "pages": 14,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】计算机网络基础考的讲解/第四章 网络层/4.4.5 BGP边界网关协议.pdf": {
+    "subject": "cn",
+    "archive": "net(1).zip",
+    "asset_path": "sources/cn/b02bed2303a1.pdf",
+    "pages": 30,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】计算机网络基础考的讲解/第四章 网络层/4.4.4_3 OSPF的分组类型.pdf": {
+    "subject": "cn",
+    "archive": "net(1).zip",
+    "asset_path": "sources/cn/7db41c81b605.pdf",
+    "pages": 15,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】计算机网络基础考的讲解/第四章 网络层/4.4.3 RIP路由信息协议.pdf": {
+    "subject": "cn",
+    "archive": "net(1).zip",
+    "asset_path": "sources/cn/fd21a9fbf47b.pdf",
+    "pages": 55,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】计算机网络基础考的讲解/第四章 网络层/4.4.4_1 OSPF的特点.pdf": {
+    "subject": "cn",
+    "archive": "net(1).zip",
+    "asset_path": "sources/cn/5760dc5a82cc.pdf",
+    "pages": 12,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】计算机网络基础考的讲解/第四章 网络层/4.4.4_2 OSPF的基本工作原理.pdf": {
+    "subject": "cn",
+    "archive": "net(1).zip",
+    "asset_path": "sources/cn/e4cfe458299a.pdf",
+    "pages": 11,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】计算机网络基础考的讲解/第五章 传输层/5.3.4+5 TCP可靠传输、流量控制（有上课手稿）.pdf": {
+    "subject": "cn",
+    "archive": "net(1).zip",
+    "asset_path": "sources/cn/41cc3b8c4873.pdf",
+    "pages": 30,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "primary_handwritten"
+  },
+  "【课件】计算机网络基础考的讲解/第五章 传输层/5.3.1+2 TCP报文段（有上课手稿）.pdf": {
+    "subject": "cn",
+    "archive": "net(1).zip",
+    "asset_path": "sources/cn/720d3ed10781.pdf",
+    "pages": 23,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "primary_handwritten"
+  },
+  "【课件】计算机网络基础考的讲解/第五章 传输层/5.3.3 TCP连接管理.pdf": {
+    "subject": "cn",
+    "archive": "net(1).zip",
+    "asset_path": "sources/cn/60cd8c0a7b25.pdf",
+    "pages": 18,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】计算机网络基础考的讲解/第五章 传输层/5.3.1+2 TCP报文段（纯净版无手稿）.pdf": {
+    "subject": "cn",
+    "archive": "net(1).zip",
+    "asset_path": "sources/cn/ff4e4dd612b7.pdf",
+    "pages": 16,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "secondary_clean"
+  },
+  "【课件】计算机网络基础考的讲解/第五章 传输层/5.3.6 TCP拥塞控制.pdf": {
+    "subject": "cn",
+    "archive": "net(1).zip",
+    "asset_path": "sources/cn/09bc850cb094.pdf",
+    "pages": 12,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】数据结构基础考点讲解/第四章 串/4.2.2_2_求next数组.pdf": {
+    "subject": "ds",
+    "archive": "struct(1).zip",
+    "asset_path": "sources/ds/f4d637932905.pdf",
+    "pages": 64,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】数据结构基础考点讲解/第四章 串/4.2.3_KMP算法的进一步优化.pdf": {
+    "subject": "ds",
+    "archive": "struct(1).zip",
+    "asset_path": "sources/ds/a9f9df2b68da.pdf",
+    "pages": 46,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】数据结构基础考点讲解/第四章 串/4.2.2_1_KMP算法.pdf": {
+    "subject": "ds",
+    "archive": "struct(1).zip",
+    "asset_path": "sources/ds/022be7497a85.pdf",
+    "pages": 95,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】数据结构基础考点讲解/第五章 树与二叉树/5.1.1+5.1.2 树的定义和基本术语.pdf": {
+    "subject": "ds",
+    "archive": "struct(1).zip",
+    "asset_path": "sources/ds/a5d8055ae71c.pdf",
+    "pages": 13,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】数据结构基础考点讲解/第五章 树与二叉树/5.5.2_1 并查集.pdf": {
+    "subject": "ds",
+    "archive": "struct(1).zip",
+    "asset_path": "sources/ds/f7542b984bc5.pdf",
+    "pages": 21,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】数据结构基础考点讲解/第五章 树与二叉树/5.4.1 树的存储结构.pdf": {
+    "subject": "ds",
+    "archive": "struct(1).zip",
+    "asset_path": "sources/ds/3bf1b589f138.pdf",
+    "pages": 17,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】组成原理基础考点讲解/第七章 输入输出系统/7.3.3 DMA方式.pdf": {
+    "subject": "co",
+    "archive": "compose(1).zip",
+    "asset_path": "sources/co/7169de50085c.pdf",
+    "pages": 12,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】组成原理基础考点讲解/第七章 输入输出系统/7.3.2_3 程序中断方式.pdf": {
+    "subject": "co",
+    "archive": "compose(1).zip",
+    "asset_path": "sources/co/6b4fa0359387.pdf",
+    "pages": 6,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】组成原理基础考点讲解/第七章 输入输出系统/7.3.2_2 多重中断.pdf": {
+    "subject": "co",
+    "archive": "compose(1).zip",
+    "asset_path": "sources/co/b349fc3eceb5.pdf",
+    "pages": 10,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】组成原理基础考点讲解/第七章 输入输出系统/7.3.2_1 中断的作用和原理.pdf": {
+    "subject": "co",
+    "archive": "compose(1).zip",
+    "asset_path": "sources/co/258bd7baa666.pdf",
+    "pages": 12,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】操作系统基础考点讲解/第五章 输入输出管理/5.1_1_IO设备的基本概念和分类.pdf": {
+    "subject": "os",
+    "archive": "os(1).zip",
+    "asset_path": "sources/os/97da471d0f1e.pdf",
+    "pages": 10,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】操作系统基础考点讲解/第五章 输入输出管理/5.2_3_设备的分配与回收.pdf": {
+    "subject": "os",
+    "archive": "os(1).zip",
+    "asset_path": "sources/os/f36aa60748fc.pdf",
+    "pages": 20,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】计算机网络基础考的讲解/第三章 数据链路层/3.4_1 流量控制、可靠传输与滑动窗口机制.pdf": {
+    "subject": "cn",
+    "archive": "net(1).zip",
+    "asset_path": "sources/cn/cf5a053a3c2f.pdf",
+    "pages": 7,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】计算机网络基础考的讲解/第三章 数据链路层/3.4_3 后退N帧协议（GBN）.pdf": {
+    "subject": "cn",
+    "archive": "net(1).zip",
+    "asset_path": "sources/cn/166abbe83fc4.pdf",
+    "pages": 30,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】计算机网络基础考的讲解/第三章 数据链路层/3.4_4 选择重传协议（SR）.pdf": {
+    "subject": "cn",
+    "archive": "net(1).zip",
+    "asset_path": "sources/cn/fe8742ec4d1f.pdf",
+    "pages": 45,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】计算机网络基础考的讲解/第三章 数据链路层/3.3.2 纠错编码（海明校验码）.pdf": {
+    "subject": "cn",
+    "archive": "net(1).zip",
+    "asset_path": "sources/cn/582506765c96.pdf",
+    "pages": 13,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】计算机网络基础考的讲解/第三章 数据链路层/3.6.3 VLAN的基本概念与基本原理.pdf": {
+    "subject": "cn",
+    "archive": "net(1).zip",
+    "asset_path": "sources/cn/30a6ea6aa653.pdf",
+    "pages": 10,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】计算机网络基础考的讲解/第三章 数据链路层/3.8 以太网交换机.pdf": {
+    "subject": "cn",
+    "archive": "net(1).zip",
+    "asset_path": "sources/cn/22513d827069.pdf",
+    "pages": 17,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】计算机网络基础考的讲解/第三章 数据链路层/3.6.2 以太网与IEEE 802.3.pdf": {
+    "subject": "cn",
+    "archive": "net(1).zip",
+    "asset_path": "sources/cn/390b6172b348.pdf",
+    "pages": 13,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】计算机网络基础考的讲解/第三章 数据链路层/3.5.2_4 CSMA CA协议.pdf": {
+    "subject": "cn",
+    "archive": "net(1).zip",
+    "asset_path": "sources/cn/870ebc77ac1c.pdf",
+    "pages": 17,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】计算机网络基础考的讲解/第三章 数据链路层/3.5.2_2+3 CSMA CD协议.pdf": {
+    "subject": "cn",
+    "archive": "net(1).zip",
+    "asset_path": "sources/cn/e91ba37bc3ea.pdf",
+    "pages": 12,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】计算机网络基础考的讲解/第四章 网络层/4.2.6 网络地址转换 NAT（有上课手稿）.pdf": {
+    "subject": "cn",
+    "archive": "net(1).zip",
+    "asset_path": "sources/cn/7842e54b4d4e.pdf",
+    "pages": 14,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "primary_handwritten"
+  },
+  "【课件】计算机网络基础考的讲解/第四章 网络层/4.2.6 网络地址转换 NAT（纯净版无手稿）.pdf": {
+    "subject": "cn",
+    "archive": "net(1).zip",
+    "asset_path": "sources/cn/8dc5084fc25c.pdf",
+    "pages": 14,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "secondary_clean"
+  },
+  "【课件】计算机网络基础考的讲解/第四章 网络层/4.2.9 ICMP网际控制报文协议.pdf": {
+    "subject": "cn",
+    "archive": "net(1).zip",
+    "asset_path": "sources/cn/652695f756a2.pdf",
+    "pages": 17,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】计算机网络基础考的讲解/第六章 应用层/6.2_1+2+3 DNS域名系统.pdf": {
+    "subject": "cn",
+    "archive": "net(1).zip",
+    "asset_path": "sources/cn/879814efd484.pdf",
+    "pages": 19,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  },
+  "【课件】计算机网络基础考的讲解/第六章 应用层/6.5 WWW和HTTP.pdf": {
+    "subject": "cn",
+    "archive": "net(1).zip",
+    "asset_path": "sources/cn/949bc9a6eaab.pdf",
+    "pages": 14,
+    "source_status": "candidate_core",
+    "status_reason": "正常课件，进入大纲+真题复核",
+    "variant_role": "single"
+  }
+}

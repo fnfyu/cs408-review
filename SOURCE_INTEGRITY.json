@@ -1,0 +1,26 @@
+{
+  "knowledge_nodes": 32,
+  "source_ref_entries": 229,
+  "unique_representative_pdfs": 122,
+  "representative_pdf_bytes": 273890086,
+  "all_source_refs_resolve": true,
+  "errors": [],
+  "full_audit_files": 350,
+  "source_status_counts": {
+    "meta_intro": 4,
+    "candidate_core": 335,
+    "attachment": 1,
+    "exclude_non_exam": 1,
+    "optional": 1,
+    "exclude_old_syllabus": 3,
+    "supplement": 3,
+    "supplement_extension": 1,
+    "meta_course_note": 1
+  },
+  "original_chapter_counts": {
+    "ds": 8,
+    "co": 7,
+    "os": 5,
+    "cn": 6
+  }
+}

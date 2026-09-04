@@ -1,0 +1,3 @@
+src/App.tsx syntax ok
+src/main.tsx syntax ok
+src/kbTypes.ts syntax ok

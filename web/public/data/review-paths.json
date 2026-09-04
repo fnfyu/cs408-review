@@ -1,0 +1,78 @@
+{
+  "by_subject": {
+    "ds": [
+      "ds-core-07",
+      "ds-core-08",
+      "ds-core-01",
+      "ds-core-02",
+      "ds-core-04",
+      "ds-core-06",
+      "ds-core-05",
+      "ds-core-03"
+    ],
+    "co": [
+      "co-core-03",
+      "co-core-04",
+      "co-core-06",
+      "co-core-01",
+      "co-core-02",
+      "co-core-05",
+      "co-core-07",
+      "co-core-08"
+    ],
+    "os": [
+      "os-core-03",
+      "os-core-05",
+      "os-core-06",
+      "os-core-01",
+      "os-core-02",
+      "os-core-04",
+      "os-core-07",
+      "os-core-08"
+    ],
+    "cn": [
+      "cn-core-03",
+      "cn-core-05",
+      "cn-core-06",
+      "cn-core-07",
+      "cn-core-01",
+      "cn-core-02",
+      "cn-core-04",
+      "cn-core-08"
+    ]
+  },
+  "priority_path": [
+    "ds-core-07",
+    "ds-core-08",
+    "co-core-03",
+    "co-core-04",
+    "co-core-06",
+    "os-core-03",
+    "os-core-05",
+    "os-core-06",
+    "ds-core-01",
+    "ds-core-02",
+    "ds-core-04",
+    "ds-core-06",
+    "co-core-01",
+    "co-core-02",
+    "co-core-05",
+    "co-core-07",
+    "os-core-01",
+    "os-core-02",
+    "os-core-04",
+    "os-core-07",
+    "cn-core-03",
+    "cn-core-05",
+    "cn-core-06",
+    "cn-core-07",
+    "ds-core-05",
+    "co-core-08",
+    "os-core-08",
+    "cn-core-01",
+    "cn-core-02",
+    "cn-core-04",
+    "cn-core-08",
+    "ds-core-03"
+  ]
+}

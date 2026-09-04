@@ -1,0 +1,18 @@
+{
+  "site_version": "phase6-v6",
+  "knowledge_schema": "408-kb-v1.1",
+  "node_count": 32,
+  "subtopic_count": 143,
+  "features": [
+    "subject_filter",
+    "tier_filter",
+    "full_text_search",
+    "review_mode",
+    "node_progress",
+    "subtopic_progress",
+    "source_pdf_open",
+    "question_evidence",
+    "original_course_catalog",
+    "legacy_bridge"
+  ]
+}
