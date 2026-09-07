@@ -1,6 +1,6 @@
 {
-  "site_version": "phase6-v6",
-  "knowledge_schema": "408-kb-v1.1",
+  "site_version": "complete-fulltext-v1",
+  "knowledge_schema": "408-kb-v2.0-fulltext",
   "node_count": 32,
   "subtopic_count": 143,
   "features": [
@@ -13,6 +13,7 @@
     "source_pdf_open",
     "question_evidence",
     "original_course_catalog",
-    "legacy_bridge"
+    "legacy_bridge",
+    "textbook_fulltext_143_subtopics"
   ]
 }

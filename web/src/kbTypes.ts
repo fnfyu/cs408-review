@@ -1,11 +1,14 @@
 export type Tier = 'S' | 'A' | 'B' | 'C' | 'D'
 export type SubjectId = 'ds' | 'co' | 'os' | 'cn'
 
+export interface WorkedExample { prompt:string; steps:string[]; conclusion:string }
+export interface FullText { overview:string; deep_dive:string[]; worked_example:WorkedExample; exam_focus:string[]; mistakes:string[]; quick_review:string[] }
 export interface Subtopic {
   subtopic_id?: string
   source_ref_ids?: string[]
   question_ref_ids?: string[]
   name: string
+  full_text?: FullText
   tier?: Tier
   core?: string[]
   model?: string

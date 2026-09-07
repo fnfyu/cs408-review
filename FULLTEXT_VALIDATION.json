@@ -1,0 +1,10 @@
+{
+  "schema": "408-kb-v2.0-fulltext",
+  "nodes": 32,
+  "subtopics": 143,
+  "fulltext_subtopics": 143,
+  "fulltext_chars": 112946,
+  "min_chars_per_subtopic": 629,
+  "avg_chars_per_subtopic": 789.8,
+  "errors": []
+}
