@@ -1,2 +1,2 @@
 {"name":"cs408-all-pdf-review","version":"1.0.0","private":true,"scripts":{"build":"node build.mjs","check":"node check.mjs",
-  "validate:data": "node validate-data.mjs"},"engines":{"node":">=20"},"dependencies":{"react-markdown":"^10.1.0","remark-gfm":"^4.0.1"},"devDependencies":{"@types/react":"^19.2.18","@types/react-dom":"^19.2.7","typescript":"^7.0.2","vite":"^8.2.2"}}
+  "validate:data": "node scripts/validate-data.mjs"},"engines":{"node":">=20"},"dependencies":{"react-markdown":"^10.1.0","remark-gfm":"^4.0.1"},"devDependencies":{"@types/react":"^19.2.18","@types/react-dom":"^19.2.7","typescript":"^7.0.2","vite":"^8.2.2"}}
