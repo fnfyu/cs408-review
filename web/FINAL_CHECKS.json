@@ -1,18 +1,24 @@
 {
-  "validate": {
-    "exit_code": 0,
-    "output": "{\n  \"nodes\": 32,\n  \"subtopics\": 143,\n  \"sourceTopics\": 350,\n  \"practiceQuestions\": 286,\n  \"errors\": 0\n}\n"
+  "version": "organized-all-content-final",
+  "rules": {
+    "all_pdf_course_content_is_key": true,
+    "pdf_is_source_layer": true,
+    "organized_notes_are_default": true,
+    "importance_filtering": false
   },
-  "syntax": {
-    "exit_code": 0,
-    "output": "src/App.tsx syntax ok\nsrc/main.tsx syntax ok\nsrc/kbTypes.ts syntax ok\n"
+  "counts": {
+    "lessons": 350,
+    "pages": 6058,
+    "organized_blocks": 3564,
+    "example_blocks": 1616,
+    "slide_images": 6058,
+    "explicit_summary_lessons": 207,
+    "fallback_summary_lessons": 143
   },
-  "deploy": {
-    "exit_code": 0,
-    "output": "{\n  \"nodes\": 32,\n  \"subtopics\": 143,\n  \"sourcePdfs\": 122,\n  \"sourcePdfBytes\": 273890086,\n  \"errors\": [],\n  \"warnings\": []\n}\n"
-  },
-  "build": {
-    "exit_code": null,
-    "output": "node_modules not present in source package; Vercel/GitHub Actions will npm install before build."
+  "checks": {
+    "app_syntax_exit": 0,
+    "data_check_exit": 0,
+    "build_exit": 0,
+    "dist_files": 6063
   }
 }
