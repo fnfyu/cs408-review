@@ -1,0 +1,18 @@
+{
+  "validate": {
+    "exit_code": 0,
+    "output": "{\n  \"nodes\": 32,\n  \"subtopics\": 143,\n  \"sourceTopics\": 350,\n  \"practiceQuestions\": 286,\n  \"errors\": 0\n}\n"
+  },
+  "syntax": {
+    "exit_code": 0,
+    "output": "src/App.tsx syntax ok\nsrc/main.tsx syntax ok\nsrc/kbTypes.ts syntax ok\n"
+  },
+  "deploy": {
+    "exit_code": 0,
+    "output": "{\n  \"nodes\": 32,\n  \"subtopics\": 143,\n  \"sourcePdfs\": 122,\n  \"sourcePdfBytes\": 273890086,\n  \"errors\": [],\n  \"warnings\": []\n}\n"
+  },
+  "build": {
+    "exit_code": null,
+    "output": "node_modules not present in source package; Vercel/GitHub Actions will npm install before build."
+  }
+}

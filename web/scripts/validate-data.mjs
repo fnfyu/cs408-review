@@ -22,5 +22,17 @@ for(const n of kb.nodes){
   }
 }
 const sourceTopics=Object.values(compat.original_chapters).flat().flatMap(c=>c.topics)
-console.log(JSON.stringify({nodes:ids.size,subtopics:subIds.size,sourceTopics:sourceTopics.length,errors:errors.length},null,2))
+
+const practicePath = new URL('../public/data/practice-bank.json',import.meta.url)
+const practice = JSON.parse(fs.readFileSync(practicePath,'utf8'))
+const validSubIds = new Set(kb.nodes.flatMap(n=>(n.subtopics||[]).map(s=>s.subtopic_id).filter(Boolean)))
+const qids = new Set()
+for(const q of practice.questions||[]){
+  if(qids.has(q.id)) errors.push(`duplicate practice question ${q.id}`)
+  qids.add(q.id)
+  if(!validSubIds.has(q.subtopic_id)) errors.push(`bad practice subtopic ${q.subtopic_id}`)
+  if(!q.answer?.points) errors.push(`missing answer ${q.id}`)
+}
+
+console.log(JSON.stringify({nodes:ids.size,subtopics:subIds.size,sourceTopics:sourceTopics.length,practiceQuestions:qids.size,errors:errors.length},null,2))
 if(errors.length){console.error(errors.slice(0,30).join('\n'));process.exit(1)}

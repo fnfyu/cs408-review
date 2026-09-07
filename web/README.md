@@ -1,32 +1,14 @@
-# React + TypeScript + Vite
+# CS408 Review Web — 完整学习闭环版
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+功能链：
+- 完整正文
+- 原始课件/PDF追溯
+- 286道原创针对性练习（143子考点 × 概念自测+典型例题）
+- 自评答对/答错
+- 错题本自动收录
+- 错题一键回链对应子考点
+- 子考点一键回到练习
+- 2009–2026历年真题证据与外部题库入口
+- 知识簇/子考点复习进度
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
-
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+所有学习记录保存在浏览器 localStorage。

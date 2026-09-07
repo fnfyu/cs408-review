@@ -1,19 +1,25 @@
 {
-  "site_version": "complete-fulltext-v1",
+  "site_version": "complete-learning-loop-v1",
   "knowledge_schema": "408-kb-v2.0-fulltext",
   "node_count": 32,
   "subtopic_count": 143,
   "features": [
-    "subject_filter",
-    "tier_filter",
+    "external_true_question_entry",
     "full_text_search",
-    "review_mode",
-    "node_progress",
-    "subtopic_progress",
-    "source_pdf_open",
-    "question_evidence",
-    "original_course_catalog",
     "legacy_bridge",
-    "textbook_fulltext_143_subtopics"
-  ]
+    "mistake_book",
+    "node_progress",
+    "original_course_catalog",
+    "practice_bank",
+    "question_evidence",
+    "review_mode",
+    "source_pdf_open",
+    "subject_filter",
+    "subtopic_practice",
+    "subtopic_progress",
+    "textbook_fulltext_143_subtopics",
+    "tier_filter",
+    "wrong_answer_backlink"
+  ],
+  "practice_questions": 286
 }

@@ -55,3 +55,29 @@ export interface KnowledgeBase {
   indexes: { by_subject: Record<SubjectId,string[]>; by_tier: Record<string,string[]>; by_tag: Record<string,string[]> }
   nodes: Node[]
 }
+
+
+export interface PracticeQuestion {
+  id:string
+  node_id:string
+  subtopic_id:string
+  subject:SubjectId
+  tier:Tier
+  subtopic:string
+  type:'concept'|'worked'
+  title:string
+  prompt:string
+  source_ref_ids?:string[]
+  question_ref_ids?:string[]
+  answer:{summary:string;points:string[];conclusion:string}
+}
+export interface PracticeBank {
+  schema_version:string
+  stats:{questions:number;concept_questions:number;worked_questions:number;subtopics_covered:number}
+  questions:PracticeQuestion[]
+}
+export interface PracticeResult {
+  status:'correct'|'wrong'
+  attempts:number
+  lastAt:string
+}
