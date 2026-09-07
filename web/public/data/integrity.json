@@ -1,0 +1,15 @@
+{
+  "version": "all-pdf-important-v1",
+  "policy": {
+    "all_pdf_content_is_key": true,
+    "summary_is_must_memorize": true,
+    "SABC_filtering": false
+  },
+  "lessons": 350,
+  "pages": 6058,
+  "summary_images": 384,
+  "slide_images": 6058,
+  "data_bytes": 3211610,
+  "validation": "npm run check passed with 0 errors",
+  "deployment": "npm run build -> dist; Vercel outputDirectory=dist"
+}
