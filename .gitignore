@@ -5,13 +5,22 @@ web/node_modules/
 .DS_Store
 .vscode/
 .idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 
-# Source extraction (huge; not needed to open Outputs)
+# TypeScript incremental
+*.tsbuildinfo
+
+# Source extraction (huge; not needed for the web app)
 extracted/
 **/pages/page-*.png
 
 # Build outputs (Vercel builds from web/; Outputs is local friend package)
 web/dist/
+web/dist-ssr/
 Outputs/assets/
 Outputs/data/
 Outputs/figures/
@@ -20,3 +29,14 @@ Outputs/index.html
 
 # Dev-only caches
 _points_export.json
+
+# ---------------------------------------------------------------------------
+# 精读重写过程中的临时文件（dump / 切片 / 抽取脚本产物）
+# 保留 web/content/ 与 web/scripts/，不要用通配误伤它们
+# ---------------------------------------------------------------------------
+web/_*/
+web/_*.txt
+web/_*.py
+web/_*.js
+web/_*.json
+web/_*.mjs

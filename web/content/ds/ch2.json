@@ -1,0 +1,884 @@
+{
+  "chapter": "第二章 线性表",
+  "chapter_order": 2,
+  "rewritten_at": "2026-09-07",
+  "source": "细读王道课件 page_texts + 考研核心考点精编交叉核对",
+  "lessons": {
+    "ds-037": {
+      "blocks": [
+        {
+          "heading": "本节学什么与知识总览",
+          "kind": "概念与原理",
+          "pages": [1, 2, 3],
+          "lines": [
+            "第二章主题：线性表——最基本的线性结构，后续栈、队列、串都建立在它之上。",
+            "本节先钉住两件事：①线性表的逻辑定义；②线性表的基本运算（创销、增删改查）。",
+            "★回顾三要素：逻辑结构、数据的运算、存储结构；存储不同，同一运算的实现方式就不同——本章后半才分别讲顺序表与链表。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "线性表的定义（逻辑结构）",
+          "kind": "概念与原理",
+          "pages": [4, 5],
+          "lines": [
+            "★定义（必背）：线性表是具有相同数据类型的 n（n≥0）个数据元素的有限序列；n 为表长，n=0 时为空表。记作 L=(a1,a2,…,an)。",
+            "ai 的“第 i 个”是位序；a1 表头、an 表尾；除首元外每个元素有唯一直接前驱，除尾元外每个元素有唯一直接后继。",
+            "★易错：位序从 1 开始，数组下标从 0 开始，二者常差 1。",
+            "“有次序”指逻辑上有序；逻辑结构是线性结构，与用数组还是链表存无关。",
+            "每个元素所占空间一样大（同类型），可用 sizeof(ElemType) 求大小。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "为什么要封装基本操作",
+          "kind": "概念与原理",
+          "pages": [6],
+          "lines": [
+            "实现基本操作的两个动机：①团队合作时让别人方便使用你的结构（封装）；②把常用运算收成函数，避免重复、降低出错。",
+            "记忆思路“创销、增删改查”贯穿整章及后续各结构。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "基本操作一览",
+          "kind": "过程与算法",
+          "pages": [7, 10],
+          "lines": [
+            "InitList(&L)：构造空表并分配空间；DestroyList(&L)：销毁并释放空间。",
+            "ListInsert(&L,i,e)：在第 i 个位置插入 e；ListDelete(&L,i,&e)：删第 i 个元素并用 e 返回其值。",
+            "LocateElem(L,e)：按值查找；GetElem(L,i)：按位查找。",
+            "Length(L) 求表长；PrintList(L) 按序输出；Empty(L) 判空。",
+            "函数名与参数形式可改（参考严蔚敏版）；开发中可按需求增补运算——重点是封装思想，而非死记某一个签名。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "何时加引用 &",
+          "kind": "规则与易错",
+          "pages": [8, 9],
+          "lines": [
+            "★规则：对参数的修改结果需要“带回来”时才加 &。",
+            "需要 &：InitList/DestroyList 改变 L 本身；ListInsert 改变表内容；ListDelete 既改表又要用 e 带回被删值。",
+            "不加 &：LocateElem、GetElem、Length、Empty、PrintList——只读或不改变调用者侧的 L/e。",
+            "易错演示：不加 & 时形参是实参的拷贝，函数内改 x 带不回主调方。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "知识回顾",
+          "kind": "图示/结论",
+          "pages": [11, 12],
+          "lines": [
+            "本节只谈逻辑结构与运算定义；用数组实现时务必审题：题目指的是位序还是下标。",
+            "下一节起才进入存储：顺序表（顺序存储）与链表（链式存储）。"
+          ],
+          "visual_only": false
+        }
+      ],
+      "must_memorize": [
+        { "text": "线性表：同类型 n（n≥0）个元素的有限序列；n=0 为空表；L=(a1,…,an)。", "page": 4 },
+        { "text": "位序从 1 开始；数组下标从 0 开始——易错差 1。", "page": 4 },
+        { "text": "除首外唯一前驱，除尾外唯一后继；逻辑线性，与存储无关。", "page": 4 },
+        { "text": "运算记忆：创销、增删改查（Init/Destroy、Insert/Delete、Locate/Get 等）。", "page": 7 },
+        { "text": "加 &：修改结果要带回（初始化、插入、删除及带回 e）；只读查找不加。", "page": 8 },
+        { "text": "存储不同 ⇒ 同一运算实现不同；先定义 ADT，再选顺序/链式实现。", "page": 3 }
+      ]
+    },
+    "ds-038": {
+      "blocks": [
+        {
+          "heading": "本节学什么",
+          "kind": "概念与原理",
+          "pages": [1, 2],
+          "lines": [
+            "顺序表 = 用顺序存储实现的线性表：逻辑相邻 ⇒ 物理也相邻。",
+            "本节建立静态分配/动态分配两种实现，以及顺序表四大特点与地址公式。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "顺序存储与地址公式",
+          "kind": "公式/代码/计算",
+          "pages": [3],
+          "lines": [
+            "顺序存储：把逻辑上相邻的元素放在物理上也相邻的单元中，关系由邻接体现。",
+            "★地址公式：第 i 个元素地址 = LOC(L) + (i−1)×sizeof(ElemType)。",
+            "元素同型、等大，故可用 sizeof(ElemType)（如 sizeof(int)=4B）。",
+            "访问第 i 个元素即 data[i−1]，与普通数组一致。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "静态分配 SqList",
+          "kind": "公式/代码/计算",
+          "pages": [4, 5, 6, 7],
+          "lines": [
+            "typedef struct{ ElemType data[MaxSize]; int length; } SqList;",
+            "连续空间大小 MaxSize×sizeof(ElemType)；初始化：分配空间、（可选）清默认值、length=0。",
+            "易错：未清默认值时内存可能有脏数据；访问宜走基本操作而非直接扫脏槽。",
+            "表满后静态数组无法扩容——“放弃治疗”；一开始开很大又浪费空间。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "动态分配 SeqList",
+          "kind": "过程与算法",
+          "pages": [8, 9],
+          "lines": [
+            "typedef struct{ ElemType *data; int MaxSize; int length; } SeqList;",
+            "申请：L.data=(ElemType*)malloc(sizeof(ElemType)*InitSize)；用完 free；C++ 可用 new/delete。",
+            "扩容思路：新申请更大空间 → 搬旧数据 → free 旧块 → 更新指针与 MaxSize；时间开销大。",
+            "注：realloc 可做，但初学建议手写 malloc/free 以理解过程。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "顺序表四大特点",
+          "kind": "对比辨析",
+          "pages": [10],
+          "lines": [
+            "★①随机存取：O(1) 找到第 i 个元素（data[i−1]）。",
+            "★②存储密度高：结点只存数据元素。",
+            "★③扩容不方便：即便动态分配，扩容仍要搬迁，代价高。",
+            "★④插入删除不方便：需大量移动元素。",
+            "对比链式：离散存指针，不能随机存取，密度更低。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "知识回顾",
+          "kind": "图示/结论",
+          "pages": [11],
+          "lines": [
+            "动手写静态/动态类型定义与 Init；弄清 malloc/free 成对使用。",
+            "下节用插入删除验证“移动元素”的代价。"
+          ],
+          "visual_only": false
+        }
+      ],
+      "must_memorize": [
+        { "text": "顺序存储：逻辑相邻 ⇒ 物理相邻；关系由单元邻接体现。", "page": 3 },
+        { "text": "第 i 元地址 = LOC(L)+(i−1)×sizeof(ElemType)；访问 data[i−1]。", "page": 3 },
+        { "text": "静态 SqList：data[MaxSize]+length，容量固定不可改。", "page": 4 },
+        { "text": "动态 SeqList：*data+MaxSize+length；malloc 申请、free 释放。", "page": 8 },
+        { "text": "四大特点：随机存取 O(1)；密度高；扩容不便；插删需大量移动。", "page": 10 }
+      ]
+    },
+    "ds-039": {
+      "blocks": [
+        {
+          "heading": "本节学什么",
+          "kind": "概念与原理",
+          "pages": [1, 2],
+          "lines": [
+            "顺序表插入与删除：用物理邻接维护逻辑次序，因此插入后移、删除前移。",
+            "代码以静态分配为例，动态分配思路相同；务必分清位序与下标。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "插入 ListInsert 步骤",
+          "kind": "过程与算法",
+          "pages": [3, 4, 5],
+          "lines": [
+            "ListInsert(&L,i,e)：在第 i 个位置插入 e（1≤i≤length+1）。",
+            "步骤：①判 i 合法且表未满（健壮性）；②从后往前把第 i～length 个元素各后移一位（从 length 扫到 i）；③写入 e；④length++。",
+            "★易错：必须从后往前移，否则会覆盖；位序 i 对应下标 i−1。",
+            "表满（如 length==MaxSize）应拒绝插入并反馈。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "插入时间复杂度",
+          "kind": "公式/代码/计算",
+          "pages": [6],
+          "lines": [
+            "问题规模 n=L.length。",
+            "★最好：插表尾 i=n+1，移动 0 次，O(1)。",
+            "★最坏：插表头 i=1，移动 n 次，O(n)。",
+            "★平均：各位置等概，平均移动次数=(0+1+…+n)/(n+1)=n/2，平均 O(n)。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "删除 ListDelete 步骤",
+          "kind": "过程与算法",
+          "pages": [7, 8],
+          "lines": [
+            "ListDelete(&L,i,&e)：删第 i 个元素并用 e 返回（1≤i≤length）。",
+            "步骤：①判 i 合法；②e=L.data[i−1]（e 必须加 & 才能带回）；③从前往后把第 i+1～length 个元素前移；④length--。",
+            "★易错：e 不加 & 则删除值带不回调用者。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "删除时间复杂度",
+          "kind": "公式/代码/计算",
+          "pages": [9],
+          "lines": [
+            "★最好：删表尾 i=n，移动 0 次，O(1)。",
+            "★最坏：删表头 i=1，移动 n−1 次，O(n)。",
+            "★平均：各位置等概，平均移动次数=(0+1+…+(n−1))/n=(n−1)/2，平均 O(n)。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "知识回顾",
+          "kind": "规则与易错",
+          "pages": [10],
+          "lines": [
+            "插入/删除平均都是 O(n)，开销来自元素移动。",
+            "对比记忆：插入平均移 n/2；删除平均移 (n−1)/2（少一次“空位”）。"
+          ],
+          "visual_only": false
+        }
+      ],
+      "must_memorize": [
+        { "text": "插入：判合法/满 → 从后往前移 i～n → 放入 e → length++。", "page": 4 },
+        { "text": "插入：最好 O(1)（表尾），最坏 O(n)（表头），平均移 n/2，O(n)。", "page": 6 },
+        { "text": "删除：取 e=data[i−1] → 从前往后前移 → length--；e 要 &。", "page": 8 },
+        { "text": "删除：最好 O(1)（表尾），最坏 O(n)（表头），平均移 (n−1)/2，O(n)。", "page": 9 },
+        { "text": "不加 & 时形参是拷贝，修改带不回主调函数。", "page": 10 }
+      ]
+    },
+    "ds-040": {
+      "blocks": [
+        {
+          "heading": "本节学什么",
+          "kind": "概念与原理",
+          "pages": [1, 2],
+          "lines": [
+            "顺序表查找分两种：按位 GetElem、按值 LocateElem。",
+            "按位体现随机存取；按值仍需顺序比较。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "按位查找 GetElem",
+          "kind": "公式/代码/计算",
+          "pages": [3, 4, 5, 6, 7],
+          "lines": [
+            "静态/动态写法相同：return L.data[i−1]；与访问普通数组一样。",
+            "★时间复杂度 O(1)：连续存放 ⇒ 由起始地址与元素大小直接定位——随机存取。",
+            "图示提醒：malloc 返回地址要强转为 ElemType*，否则按错误步长解读内存（如把 6B 元素当 int 4B 扫）。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "按值查找 LocateElem",
+          "kind": "过程与算法",
+          "pages": [8, 9],
+          "lines": [
+            "从 data[0] 起循环：相等则返回位序 i+1；扫完返回 0 表示失败。",
+            "基本类型可用 ==；命中第一个相等元素即返回。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "结构体能否用 ==",
+          "kind": "规则与易错",
+          "pages": [10, 11],
+          "lines": [
+            "C 语言中结构体不能直接用 ==，应逐分量比较（可封装比较函数）。",
+            "★考研手写代码：无论 ElemType 是否结构体，一般允许写 ==——重在算法思想；专考 C 语法时再从严。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "按值查找时间复杂度",
+          "kind": "公式/代码/计算",
+          "pages": [12],
+          "lines": [
+            "★最好：目标在表头，比较 1 次，O(1)。",
+            "★最坏：目标在表尾（或失败扫完），比较 n 次，O(n)。",
+            "★平均：各位置等概，平均比较次数=(1+2+…+n)/n=(n+1)/2，平均 O(n)。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "知识回顾",
+          "kind": "对比辨析",
+          "pages": [13],
+          "lines": [
+            "按位 O(1) vs 按值平均 (n+1)/2：顺序表强在“第几个”，弱在“哪个值”。",
+            "有序顺序表按值还可折半到 O(log₂n)——后续查找章展开；无序时仍是 O(n)。"
+          ],
+          "visual_only": false
+        }
+      ],
+      "must_memorize": [
+        { "text": "按位 GetElem：return data[i−1]；静态动态同；O(1) 随机存取。", "page": 7 },
+        { "text": "按值 LocateElem：从前往后比，命中返回位序 i+1，失败返回 0。", "page": 8 },
+        { "text": "按值：最好 O(1)，最坏 O(n)，平均比较 (n+1)/2，平均 O(n)。", "page": 12 },
+        { "text": "C 中结构体不能直接 ==；考研手写通常可用 == 表达算法。", "page": 10 },
+        { "text": "malloc 返回值须转为与元素类型匹配的指针，步长才正确。", "page": 6 }
+      ]
+    },
+    "ds-041": {
+      "blocks": [
+        {
+          "heading": "本节学什么",
+          "kind": "概念与原理",
+          "pages": [1, 2, 3],
+          "lines": [
+            "单链表：链式存储的线性表；逻辑相邻，物理可离散。",
+            "本节定义结点类型、头指针、带头/不带头，并对比顺序表优缺点。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "单链表 vs 顺序表（存储视角）",
+          "kind": "对比辨析",
+          "pages": [4],
+          "lines": [
+            "顺序表：只存数据；优点随机存取、密度高；缺点要大片连续空间、改容量不便。",
+            "单链表：数据域+指针域；优点不需大片连续空间、改容量方便；缺点不可随机存取、指针占额外空间（密度低）。",
+            "二者逻辑结构都是线性表。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "结点类型 LNode / LinkList",
+          "kind": "公式/代码/计算",
+          "pages": [5, 6, 7, 8, 9],
+          "lines": [
+            "结点 = 数据域 data + 指针域 next（指向后继）。",
+            "typedef struct LNode{ ElemType data; struct LNode *next; } LNode, *LinkList;",
+            "★强调结点用 LNode*；强调整表用 LinkList（通常即头指针类型）。",
+            "申请：LNode *p=(LNode*)malloc(sizeof(LNode))；释放 free(p)。",
+            "表示一条链表：声明头指针 L 指向第一个结点（或头结点）。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "不带头结点 vs 带头结点",
+          "kind": "对比辨析",
+          "pages": [10, 11, 12],
+          "lines": [
+            "不带头：头指针 L 直接指向首元；空表 L==NULL；初始化只声明指针，并不创建结点。",
+            "带头：头指针 L 指向头结点；头结点不存有效数据，next 指向首元；空表时头结点仍在且 next==NULL。",
+            "★带头好处：对“第一个数据结点”与“空表”无需特殊分支，插删代码统一、更简洁。",
+            "★除非特别声明，课件/王道后续代码默认带头结点。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "知识回顾",
+          "kind": "图示/结论",
+          "pages": [13],
+          "lines": [
+            "头结点不存数据，只为操作方便。",
+            "下节起大量练习后插、前插、删除——指针修改顺序是高频坑。"
+          ],
+          "visual_only": false
+        }
+      ],
+      "must_memorize": [
+        { "text": "单链表结点：data + next；逻辑相邻物理可离散。", "page": 4 },
+        { "text": "typedef struct LNode{…} LNode,*LinkList；结点用 LNode*，表用 LinkList。", "page": 7 },
+        { "text": "malloc(sizeof(LNode)) 申请结点，free 释放。", "page": 5 },
+        { "text": "头结点不存数据只为方便；默认带头，空表/首元无需特殊处理。", "page": 12 },
+        { "text": "链表优：离散易扩容；劣：不可随机存取、密度低。", "page": 4 }
+      ]
+    },
+    "ds-042": {
+      "blocks": [
+        {
+          "heading": "本节学什么与图示约定",
+          "kind": "概念与原理",
+          "pages": [1, 2, 3],
+          "lines": [
+            "单链表插入与删除：核心是“找到前驱 + 改指针”；带头时头结点可看作第 0 个结点。",
+            "简化图：L→头→a1→…→NULL；申请结点 malloc，用完 free。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "按位序插入（带头）",
+          "kind": "过程与算法",
+          "pages": [4, 5, 6, 7, 8, 9, 10],
+          "lines": [
+            "ListInsert(&L,i,e)：找到第 i−1 个结点 p，在 p 后插入新结点 s。",
+            "★后插两步（顺序不能反）：s->next=p->next; p->next=s; 若先 p->next=s 会丢失原后继。",
+            "i=1（表头）、表中、表尾均可统一；i>length+1 非法应拒绝。",
+            "按位序：i=1 时 p 即头结点，找前驱 O(1)；找第 i−1 个最坏/平均 O(n)。若已给定结点 p 再后插，则改指针本身 O(1)。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "按位序插入（不带头）",
+          "kind": "规则与易错",
+          "pages": [11, 12, 13],
+          "lines": [
+            "不存在“第 0 个”结点：i=1 必须改头指针 L（s->next=L; L=s），需单独分支。",
+            "i>1 时与带头后插逻辑相同。",
+            "★结论：不带头更麻烦；考试两种都可能考，审题；默认代码带头。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "指定结点后插 / 前插",
+          "kind": "过程与算法",
+          "pages": [14, 15, 16, 17, 18],
+          "lines": [
+            "后插 InsertNextNode(p,e)：已知 p，O(1)；注意 malloc 可能失败。",
+            "前插常规：传入头指针循环找 p 的前驱 q，再对 q 后插 ⇒ O(n)。",
+            "★偷天换日 O(1)：先把 s 后插到 p 后，再交换 s->data 与 p->data（等价于在 p 前插入新值）。",
+            "王道书可用临时变量交换 data；效果相同。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "按位序删除（带头）",
+          "kind": "过程与算法",
+          "pages": [19, 20],
+          "lines": [
+            "ListDelete(&L,i,&e)：找第 i−1 个结点 p；q=p->next；e=q->data；p->next=q->next；free(q)。",
+            "最好（删首元且 p 已是头结点）O(1)；找前驱最坏/平均 O(n)。",
+            "不带头删第 1 个元素同样要改 L，需特殊处理。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "指定结点删除与尾结点坑",
+          "kind": "规则与易错",
+          "pages": [21, 22, 23],
+          "lines": [
+            "删指定结点 p：方法1 从头找前驱再删；方法2 偷天换日。",
+            "★偷天换日删 p：q=p->next；p->data=q->data；p->next=q->next；free(q) ⇒ O(1)。",
+            "★例外：p 是尾结点（q==NULL）无法偷天换日，只能从头找前驱，O(n)。",
+            "单链表局限：不能逆向检索，前驱不好得。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "封装与审题",
+          "kind": "图示/结论",
+          "pages": [24, 25, 26],
+          "lines": [
+            "把“找第 i−1 个结点”“后插”封成基本操作，插删主流程更清晰。",
+            "必记：这些代码都要会手写；审题是否带头；尾结点删除要特判。"
+          ],
+          "visual_only": false
+        }
+      ],
+      "must_memorize": [
+        { "text": "后插：s->next=p->next; p->next=s; 顺序颠倒会丢后继。", "page": 5 },
+        { "text": "带头：头结点当第 0 个；找 i−1 后插/后删；平均插删 O(n)。", "page": 4 },
+        { "text": "不带头插删第 1 个要改 L；默认带头，考试审题。", "page": 13 },
+        { "text": "前插偷天换日：后插再交换 data，O(1)；或找前驱 O(n)。", "page": 17 },
+        { "text": "删结点偷天换日：用后继数据覆盖 p 再删后继，O(1)。", "page": 22 },
+        { "text": "尾结点无法偷天换日删除，只能找前驱，O(n)。", "page": 23 }
+      ]
+    },
+    "ds-043": {
+      "blocks": [
+        {
+          "heading": "本节学什么",
+          "kind": "概念与原理",
+          "pages": [1, 2],
+          "lines": [
+            "单链表查找：按位 GetElem、按值 LocateElem；本节默认带头结点。",
+            "另含求表长 Length——同样只能遍历。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "按位查找与边界",
+          "kind": "过程与算法",
+          "pages": [3, 4, 5, 6, 7],
+          "lines": [
+            "从头结点或首元出发沿 next 前进；通常取 p=L，走 i 步得到第 i 个结点（头结点视为位序 0）。",
+            "边界：i=0 可返回头结点；i 超长返回 NULL——体现健壮性。",
+            "★平均时间复杂度 O(n)；不可随机存取。",
+            "封装 GetElem 后，插入删除可复用“找第 i−1 个”，避免重复代码。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "按值查找",
+          "kind": "过程与算法",
+          "pages": [8, 9, 10],
+          "lines": [
+            "LocateElem：从首元起比较 data 与 e，命中返回该结点指针，否则 NULL。",
+            "ElemType 为结构体时比较规则同顺序表（分量比较；考研手写可 ==）。",
+            "★平均时间复杂度 O(n)。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "求表长",
+          "kind": "公式/代码/计算",
+          "pages": [11],
+          "lines": [
+            "Length：从首元遍历计数至 NULL，O(n)。",
+            "不带头时计数起点不同，但同样 O(n)；顺序表则 O(1) 读 length 字段。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "知识回顾",
+          "kind": "对比辨析",
+          "pages": [12],
+          "lines": [
+            "链表按位/按值/求长全是 O(n)；顺序表按位 O(1)、按值平均 (n+1)/2。",
+            "查找是插删的前置步骤——插删总代价常被“查找位置”主导。"
+          ],
+          "visual_only": false
+        }
+      ],
+      "must_memorize": [
+        { "text": "单链表按位查找需遍历，平均 O(n)；i=0 可接头结点，越界返回 NULL。", "page": 6 },
+        { "text": "按值查找从头比较，命中返回结点指针，失败 NULL，平均 O(n)。", "page": 10 },
+        { "text": "求表长 Length 遍历计数，O(n)。", "page": 11 },
+        { "text": "本节默认带头；封装 GetElem 可复用于插删。", "page": 2 },
+        { "text": "链表不能随机存取——按位也只能顺序走指针。", "page": 6 }
+      ]
+    },
+    "ds-044": {
+      "blocks": [
+        {
+          "heading": "本节学什么",
+          "kind": "概念与原理",
+          "pages": [1, 2],
+          "lines": [
+            "建立单链表：初始化空表 + 反复把元素插到表尾或表头。",
+            "默认带头；核心仍是“指定结点后插”。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "尾插法（为何要尾指针）",
+          "kind": "过程与算法",
+          "pages": [3, 4, 5, 6],
+          "lines": [
+            "若每次 ListInsert(L,length+1,e) 都从头走到尾 ⇒ 总时间 O(n²)。",
+            "★优化：设尾指针 r 始终指向最后一个结点；每次 s=malloc…; r->next=s; r=s; 最后 r->next=NULL。",
+            "★正向建立，时间复杂度 O(n)。",
+            "初始化：先建头结点，r=L；输入哨兵（如 9999）结束。不带头时首元要特判。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "头插法与逆置",
+          "kind": "过程与算法",
+          "pages": [7, 8],
+          "lines": [
+            "头插：每次对新结点做“对头结点的后插”：s->next=L->next; L->next=s。",
+            "★逆向建立：输入顺序与最终链表顺序相反。",
+            "★重要应用：链表逆置。三指针法（带头）：p=L->next; L->next=NULL; 然后 while(p){ r=p->next; p->next=L->next; L->next=p; p=r; }——实质是把原结点逐个头插到空表。",
+            "也可理解为：断链 → 头插 → 前进；勿丢后继指针。",
+            "好习惯：初始化单链表先把 L->next=NULL（或头指针置空），避免脏链；去掉该句可能链上垃圾指针。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "知识回顾",
+          "kind": "图示/结论",
+          "pages": [9],
+          "lines": [
+            "头插/尾插核心 = 初始化 + 后插；尾插务必维护 r。",
+            "动手：给定 LinkList L，用头插/三指针写出逆置（高频手写）。"
+          ],
+          "visual_only": false
+        }
+      ],
+      "must_memorize": [
+        { "text": "尾插：r 指表尾；r->next=s; r=s; 最后 r->next=NULL；正向 O(n)。", "page": 6 },
+        { "text": "无尾指针每次插尾要从头找，总代价 O(n²)。", "page": 4 },
+        { "text": "头插：s->next=L->next; L->next=s；逆向建立。", "page": 8 },
+        { "text": "逆置：断链后把结点逐个头插（三指针 p/r 保存后继），O(n)。", "page": 8 },
+        { "text": "建表=初始化+后插；初始化先令空表 next/头指针可靠为空。", "page": 9 }
+      ]
+    },
+    "ds-045": {
+      "blocks": [
+        {
+          "heading": "本节学什么",
+          "kind": "概念与原理",
+          "pages": [1, 2],
+          "lines": [
+            "双链表：每个结点增加 prior 前驱指针，可双向遍历。",
+            "相对单链表：前驱易得，但存储密度更低。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "单链 vs 双链与初始化",
+          "kind": "对比辨析",
+          "pages": [3, 4],
+          "lines": [
+            "单链表从 p 只能走向后继，“神秘未知”的前驱区无法直接到。",
+            "★普通双链表空表（带头）：头结点 prior=NULL、next=NULL。循环双链空表才是 prior/next 都指向自己（见 ds-046），勿混。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "双链表插入（后插四指针）",
+          "kind": "过程与算法",
+          "pages": [5, 6],
+          "lines": [
+            "在 p 之后插入 s，★推荐顺序：①s->next=p->next；②p->next->prior=s；③s->prior=p；④p->next=s。",
+            "易错：若先改 p->next=s 再访问原后继，会丢链；p 为尾结点时无后继 prior，需特判。",
+            "有了后插，按位序插入/前插都可转化；前驱已知时比单链方便。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "双链表删除",
+          "kind": "过程与算法",
+          "pages": [7],
+          "lines": [
+            "删 p 的后继 q：p->next=q->next; q->next->prior=p; free(q)。",
+            "q 为尾结点时无 q->next->prior，需特判；销毁整表时最后才能删头结点。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "遍历与查找复杂度",
+          "kind": "公式/代码/计算",
+          "pages": [8],
+          "lines": [
+            "后向：p=p->next 直至 NULL；前向：p=p->prior；若要跳过头结点可用 while(p->prior!=NULL)。",
+            "★双链表仍不可随机存取：按位/按值查找都要遍历，O(n)；优势在插删改指针灵活、前驱 O(1) 可得。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "知识回顾",
+          "kind": "图示/结论",
+          "pages": [9],
+          "lines": [
+            "思考不带头双链：首尾边界与空表判断更烦——仍推荐带头。",
+            "改四根指针时默念顺序，尾结点单独分支。"
+          ],
+          "visual_only": false
+        }
+      ],
+      "must_memorize": [
+        { "text": "双链表结点：prior+data+next；可双向走，密度更低。", "page": 3 },
+        { "text": "后插四步：s->next=p->next; p->next->prior=s; s->prior=p; p->next=s。", "page": 6 },
+        { "text": "删后继：p->next=q->next; q->next->prior=p; free(q)；尾结点特判。", "page": 7 },
+        { "text": "查找仍 O(n)；插删改指针更灵活，前驱易得。", "page": 8 },
+        { "text": "修改指针必须注意顺序，先断后继链会丢结点。", "page": 6 }
+      ]
+    },
+    "ds-046": {
+      "blocks": [
+        {
+          "heading": "本节学什么",
+          "kind": "概念与原理",
+          "pages": [1, 2],
+          "lines": [
+            "循环链表：把尾指针从“指空”改为“指回头”，形成环。",
+            "分循环单链表与循环双链表；空表判断与头尾操作技巧是考点。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "循环单链表",
+          "kind": "概念与原理",
+          "pages": [3, 4, 5],
+          "lines": [
+            "表尾结点 next 指向头结点（而非 NULL）。",
+            "★空表（带头）：L->next==L；非空则 L->next 指向首元，沿 next 能绕回 L。",
+            "从任一结点出发可访问所有结点；普通单链只能访问后继方向。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "L 指表尾的技巧",
+          "kind": "规则与易错",
+          "pages": [6],
+          "lines": [
+            "若 L 仍指头：找尾 O(n)，找头 O(1)。",
+            "★让 L 指向表尾：找头 L->next 为 O(1)，找尾本身 O(1)——适合频繁对头尾操作（如某些队列）。",
+            "插删可能改尾，记得维护 L。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "循环双链表",
+          "kind": "对比辨析",
+          "pages": [7, 8],
+          "lines": [
+            "普通双链：头 prior=NULL，尾 next=NULL。",
+            "循环双链：头 prior 指表尾，尾 next 指头。",
+            "★空表：L->next==L 且 L->prior==L（“双手抱住空虚的自己”）。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "循环双链上的插删",
+          "kind": "过程与算法",
+          "pages": [9, 10],
+          "lines": [
+            "★插删语句可与普通双链同形（后插四指针、后删两向改链）；因已成环，不再出现“后继为 NULL”的特判，尾后插/删尾也能统一写。",
+            "判空：循环单 L->next==L；循环双 L->next==L 且 L->prior==L。遍历终止：回到出发点，不能只判 NULL。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "知识回顾",
+          "kind": "图示/结论",
+          "pages": [11],
+          "lines": [
+            "口诀：单手抱空=循环单空表；双手抱空=循环双空表；普通双空是 prior/next 皆空。",
+            "遍历终止条件要改成“回到出发点”，不能只判 NULL。"
+          ],
+          "visual_only": false
+        }
+      ],
+      "must_memorize": [
+        { "text": "循环单链：尾 next 指头；空表（带头）L->next==L。", "page": 4 },
+        { "text": "从任一结点可找到所有结点；普通单链只能向后。", "page": 5 },
+        { "text": "L 指表尾：找头/找尾均可 O(1)，适合头尾频繁操作。", "page": 6 },
+        { "text": "循环双链：头 prior 指尾，尾 next 指头；空表 next/prior 都等于 L。", "page": 7 },
+        { "text": "遍历/插删以“不断环、判空用自指”为核心，勿再盲目判 NULL。", "page": 11 }
+      ]
+    },
+    "ds-047": {
+      "blocks": [
+        {
+          "heading": "本节学什么",
+          "kind": "概念与原理",
+          "pages": [1, 2],
+          "lines": [
+            "静态链表：用数组模拟链表——游标（数组下标）充当指针。",
+            "结点集中在一片连续空间，逻辑上仍是链式。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "结构与图示含义",
+          "kind": "图示/结论",
+          "pages": [3],
+          "lines": [
+            "每个结点：data + next（游标=下一结点下标）。",
+            "★游标 −1 表示表尾；0 号结点常充当头结点；游标扮演“指针”。",
+            "与单链对比：单链结点散落内存；静态链表整片数组安置，可用起始地址+下标×结点大小定位。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "类型定义",
+          "kind": "公式/代码/计算",
+          "pages": [4, 5, 6],
+          "lines": [
+            "typedef struct{ ElemType data; int next; } SLinkList[MaxSize];",
+            "等价于定义长度为 MaxSize 的结点数组；下标即“地址”。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "初始化与基本操作",
+          "kind": "过程与算法",
+          "pages": [7, 8],
+          "lines": [
+            "初始化：a[0].next=−1；其余结点 next 置特殊空闲标记（如 −2）。",
+            "插入位序 i：①找空闲结点写入数据；②从头走到 i−1；③改新结点 next；④改 i−1 的 next。",
+            "删除：找前驱 → 改前驱游标绕过被删结点 → 被删 next 置 −2。",
+            "查找：从头结点沿游标依次遍历。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "优缺点与适用场景",
+          "kind": "对比辨析",
+          "pages": [9],
+          "lines": [
+            "★优点：增删不必大量移动元素（改游标即可）。",
+            "★缺点：不能随机存取；容量 MaxSize 固定。",
+            "★适用：①不支持指针的低级语言；②元素个数相对固定（经典：操作系统文件分配表 FAT）。"
+          ],
+          "visual_only": false
+        }
+      ],
+      "must_memorize": [
+        { "text": "静态链表：数组实现；next 为游标（下标）而非地址。", "page": 3 },
+        { "text": "游标 −1=表尾；−2（或约定值）=空闲；0 号常作头结点。", "page": 9 },
+        { "text": "SLinkList[MaxSize]：一整片连续结点数组。", "page": 5 },
+        { "text": "插删改游标，不必搬大量元素；查找仍顺序遍历。", "page": 8 },
+        { "text": "不能随机存取、容量固定；场景含无指针语言与 FAT。", "page": 9 }
+      ]
+    },
+    "ds-048": {
+      "blocks": [
+        {
+          "heading": "本节学什么",
+          "kind": "概念与原理",
+          "pages": [1, 2],
+          "lines": [
+            "综合比较顺序表与链表：同一逻辑结构，不同存储 ⇒ 不同效率与适用场景。",
+            "答题按“逻辑→存储→基本操作→选用”展开。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "Round 1–2：逻辑与存储",
+          "kind": "对比辨析",
+          "pages": [3, 4],
+          "lines": [
+            "逻辑结构：二者都是线性表/线性结构。",
+            "顺序表（顺序存储）：随机存取、密度高；要大片连续空间，改容量不便。",
+            "链表（链式存储）：离散小空间、易扩容；不可随机存取，密度低。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "创与销",
+          "kind": "对比辨析",
+          "pages": [5, 6, 7],
+          "lines": [
+            "创：顺序表预分配大片连续空间（静态不可变；动态可扩但搬迁代价高）；链表只需头结点/头指针，随后按需 malloc。",
+            "销：静态顺序表空间常随作用域回收；动态顺序表 free(L.data)；链表须依次 free 各结点（malloc/free 成对）。",
+            "记忆主线仍是创销、增删改查。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "增删与查找",
+          "kind": "对比辨析",
+          "pages": [8, 9],
+          "lines": [
+            "插删：顺序表 O(n)，开销主要在移动元素（元素很大时更惨）；链表 O(n)，开销主要在查找位置，改指针 O(1)。",
+            "按位：顺序表 O(1)，链表 O(n)。",
+            "按值：二者平均都 O(n)；顺序表若有序可折半 O(log₂n)。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "怎么选",
+          "kind": "图示/结论",
+          "pages": [10],
+          "lines": [
+            "表长难预估、增删多 → 选链表（弹性、插删改指针）。",
+            "表长可预估、查询多 → 选顺序表（按位 O(1)，有序还可更快）。"
+          ],
+          "visual_only": false
+        },
+        {
+          "heading": "开放题答题模板",
+          "kind": "例题与应用",
+          "pages": [11],
+          "lines": [
+            "先写：逻辑结构同为线性表。",
+            "再写：存储不同——顺序存储特点/优缺；链式存储特点/优缺。",
+            "再写：初始化、插入、删除、查找的效率差异。",
+            "最后结合场景给出选用结论。"
+          ],
+          "visual_only": false
+        }
+      ],
+      "must_memorize": [
+        { "text": "逻辑同为线性表；差别在存储结构。", "page": 3 },
+        { "text": "顺序：随机存取、密度高、连续空间/扩容难；链：易扩容、不可随机、密度低。", "page": 4 },
+        { "text": "插删都 O(n)：顺序开销在移动，链开销在查找（改指针 O(1)）。", "page": 8 },
+        { "text": "按位：顺序 O(1)、链 O(n)；按值均 O(n)（有序顺序可 O(log₂n)）。", "page": 9 },
+        { "text": "表长难估/增删多→链表；表长可估/查询多→顺序表。", "page": 10 },
+        { "text": "开放题：逻辑→存储优缺→各运算效率→场景选型。", "page": 11 }
+      ]
+    }
+  }
+}
