@@ -61,6 +61,14 @@ while ($listener.IsListening) {
     } else {
       $ext = [IO.Path]::GetExtension($path).ToLowerInvariant()
       $res.ContentType = $(if ($mime.ContainsKey($ext)) { $mime[$ext] } else { 'application/octet-stream' })
+      # 本地预览也带上缓存头，避免反复拉同一张原页图
+      if ($ext -in '.webp', '.png', '.jpg', '.jpeg', '.gif', '.svg', '.woff', '.woff2', '.ico') {
+        $res.Headers['Cache-Control'] = 'public, max-age=31536000, immutable'
+      } elseif ($ext -eq '.json') {
+        $res.Headers['Cache-Control'] = 'public, max-age=0, must-revalidate'
+      } elseif ($ext -in '.html', '.js', '.css') {
+        $res.Headers['Cache-Control'] = 'public, max-age=0, must-revalidate'
+      }
       $bytes = [IO.File]::ReadAllBytes($path)
       $res.ContentLength64 = $bytes.Length
       $res.OutputStream.Write($bytes, 0, $bytes.Length)
